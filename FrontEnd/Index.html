@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light mt-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="./Assets/chatting.png" alt="" height="75">
+                    Guide-me
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Carreras
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Comercio internacional</a></li>
+                                <li><a class="dropdown-item" href="#">Gestión areoportuaria</a></li>
+                                <li><a class="dropdown-item" href="#">Logistica</a></li>
+                                <li><a class="dropdown-item" href="#">Turismo</a></li>
+                                <li><a class="dropdown-item" href="#">Desarrollo de software</a></li>
+                                <li><a class="dropdown-item" href="#">Higiene y Seguridad</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">login</a>
+                        </li>
+                    </ul>
+
+                    <!--Notificaciones-->
+                    <div class="dropdown">
+                        <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="#">Some news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Another news</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Perfil-->
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                            id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
+                                height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item" href="#">My profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Settings</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <div class="row mt-3">
+            <div class="col-lg-6 offset-lg-2  offset-md-2 col-md-5 col-xs-10 col-sm-10 mt-2 ">
+                <input class="form-control me-2" type="search" placeholder="Buscar publicación por oficio"
+                    aria-label="Search">
+            </div>
+            <div class="col-lg-4 col-md-5 col-xs-2 col-sm-2 mt-2 "><button class="btn btn-outline-success"
+                    type="submit">Buscar</button></div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Comercio-internacional.jpg" class="rounded" width="90%" height="80"
+                        alt=""></a>
+            </div>
+
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Gestión-areoportuaria.jpg" class="rounded" width="90%" height="80"
+                        alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Logística.jpg" class="rounded" width="90%" height="80" alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Turismo.jpg" class="rounded" width="90%" height="80" alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Desarrollo-de-software.jpg" class="rounded" width="90%" height="80"
+                        alt=""></a>
+            </div>
+            <div class="col-lg-4 col-md-5 col-xs-12 col-sm-12 mt-2 ">
+                <a href=""><img src="./Assets/Higiene-y-Seguridad.jpg" class="rounded" width="90%" height="80"
+                        alt=""></a>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 18rem;">
+                    <div class="card-header text-center">
+                        <img src="./Assets/ruth.jpg" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Ruth iascas</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Supervisor de Logistica</p>
+                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
+                            años...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3 tarjetas cardSoftware" >
+                    <div class="card-header text-center">
+                        <img  class= "rounded" src="./Assets/garrido.jfif" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Nicolas Garrido</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-white">Supervisor de Logistica</p>
+                        <p class="text-light ">Hola ¿Como estan? soy Nicolas Garrido trabajo como ingeniero de software y docente en la upe...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3  tarjetas cardComercio">
+                    <div class="card-header text-center">
+                        <img class="rounded" src="./Assets/Comerciante.jpg" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Sebastian Lopez</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Comerciante</p>
+                        <p class="text-light ">Buenas mi nombre es sebastian lopez egrasado de comercio internacional en la upe actualmente trabajo como...
+                        
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="card border border-3 border-dark mb-3  tarjetas cardHigiene ">
+                    <div class="card-header text-center">
+                        <img src="./Assets/AndresRoldan.png" class="rounded" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Andres Roldan</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Analista de Seguridad y Higiene</p>
+                        <p class="text-light ">Buenas soy Andres Roldan estudie seguridad y higiene en la upe y actualmente trabajo como...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+        </div>
+        <div class="row mt-4">
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 18rem;">
+                    <div class="card-header text-center">
+                        <img src="./Assets/ruth.jpg" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Ruth iascas</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Supervisor de Logistica</p>
+                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
+                            años...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3 tarjetas cardSoftware" >
+                    <div class="card-header text-center">
+                        <img  class= "rounded" src="./Assets/garrido.jfif" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Nicolas Garrido</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-white">Supervisor de Logistica</p>
+                        <p class="text-light ">Hola ¿Como estan? soy Nicolas Garrido trabajo como ingeniero de software y docente en la upe...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card border border-3 border-dark mb-3  tarjetas cardComercio">
+                    <div class="card-header text-center">
+                        <img class="rounded" src="./Assets/Comerciante.jpg" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Sebastian Lopez</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Comerciante</p>
+                        <p class="text-light ">Buenas mi nombre es sebastian lopez egrasado de comercio internacional en la upe actualmente trabajo como...
+                        
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+            <!--comienza tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="card border border-3 border-dark mb-3  tarjetas cardHigiene ">
+                    <div class="card-header text-center">
+                        <img src="./Assets/AndresRoldan.png" class="rounded" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Andres Roldan</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Analista de Seguridad y Higiene</p>
+                        <p class="text-light ">Buenas soy Andres Roldan estudie seguridad y higiene en la upe y actualmente trabajo como...
+                        </p>
+                        <a href="" class="text-light">Ver publicación Completa</a>
+                    </div>
+                </div>
+            </div>
+            <!--fin de tarjeta-->
+        </div>
+        
+        
+
+
+
+    </div><!-- container -->
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>l
