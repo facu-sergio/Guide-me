@@ -17,7 +17,7 @@ class Menu extends HTMLElement {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -32,6 +32,9 @@ class Menu extends HTMLElement {
                             <li><a class="dropdown-item" href="#">Desarrollo de software</a></li>
                             <li><a class="dropdown-item" href="#">Higiene y Seguridad</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./form-publicacion.html">Crear publicacion</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./login.html">login</a>
@@ -68,6 +71,9 @@ class Menu extends HTMLElement {
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
                             <a class="dropdown-item" href="#">Mi Perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="./formulario_registro.html">Registrarse</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="./misPublicaciones.html">Mis publicaciones</a>
