@@ -50,13 +50,10 @@ class Menu extends HTMLElement {
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="#">Some news</a>
+                            <a class="dropdown-item" href="#">A sebastian Lopez le gusta tu comentario</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Cristian Lopez subio una nueva publicación</a>
                         </li>
                     </ul>
                 </div>
