@@ -4,7 +4,7 @@ class Footer extends HTMLElement{
     }
     connectedCallback(){
         this.innerHTML = `
-        <section >
+        <section>
         <!-- Footer -->
         <footer class="footer fixed-bottom text-center text-lg-start text-white" >
           <!-- Grid container

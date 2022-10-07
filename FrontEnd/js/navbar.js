@@ -73,6 +73,9 @@ class Menu extends HTMLElement {
                             <a class="dropdown-item" href="#">Mi Perfil</a>
                         </li>
                         <li>
+                        <a class="dropdown-item" href="./editar_perfil.html">Editar Perfil</a>
+                    </li>
+                        <li>
                             <a class="dropdown-item" href="./formulario_registro.html">Registrarse</a>
                         </li>
                         <li>
