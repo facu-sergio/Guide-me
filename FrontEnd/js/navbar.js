@@ -3,7 +3,7 @@ class Menu extends HTMLElement {
         super();
     }
     connectedCallback(){
-        this.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light bg-light mt-3">
+        this.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light bg-light mt-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="./Assets/chatting.png" alt="" height="75">
