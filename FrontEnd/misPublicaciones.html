@@ -29,9 +29,9 @@
         </div>
         <div class="row mt-4">
             <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                
-                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 20rem;">
+            <div class="col-xs-12 col-sm-6 col-md-4 offset-md-1 col-lg-4 ">
+                <h2>Publicadas</h2>
+                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 24rem;">
                     <div class="card-header text-center">
                         <img class="rounded" src="./Assets/ruth.jpg" width="60" height="60" height="80" alt="">
                         <p class="h4 text-light">Ruth iascas</p>
@@ -41,16 +41,33 @@
                         <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
                             años...
                         </p>
-                        <button class="btn btn-success">Editar</button>
+                        <a class="btn btn-warning" href="./editar_publicacion.html" >Editar</a>
                         <button class="btn btn-danger">Borrar</button>
                         <a href="./publicacion.html" class="btn btn-info">Ver publicación</a>
                     </div>
                 </div>
             </div>
             <!--fin de tarjeta-->
+            <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2  col-lg-4 ">
+                <h2>Borradores</h2>
+                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 24rem;">
+                    <div class="card-header text-center">
+                        <img class="rounded" src="./Assets/ruth.jpg" width="60" height="60" height="80" alt="">
+                        <p class="h4 text-light">Ruth iascas</p>
+                    </div>
+                    <div class="card-body text-primary">
+                        <p class="h3 text-light">Supervisor de Logistica</p>
+                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
+                            años...
+                        </p>
+                        <a class="btn btn-warning" href="./editar_publicacion.html">Editar</a>
+                        <button class="btn btn-danger">Borrar</button>
+                        <a href="./borrador_publicacion.html" class="btn btn-info">Previsualizar</a>
+                        <button class="btn btn-success">Publicar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div><!--fin Container-->
-    <menu-footer></menu-footer>
 </body>
-
 </html>

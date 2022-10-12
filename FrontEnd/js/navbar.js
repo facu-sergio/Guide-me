@@ -2,7 +2,7 @@ class Menu extends HTMLElement {
     constructor() {
         super();
     }
-    connectedCallback(){
+    connectedCallback() {
         this.innerHTML = `<nav class="navbar navbar-expand-sm navbar-light bg-light mt-2">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -37,7 +37,10 @@ class Menu extends HTMLElement {
                         <a class="nav-link active" aria-current="page" href="./form-publicacion.html">Crear publicacion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./login.html">login</a>
+                        <a class="nav-link active" aria-current="page" href="./login.html">Login</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="./formulario_registro.html">Registrarse</a>
                     </li>
                 </ul>
         
@@ -62,19 +65,16 @@ class Menu extends HTMLElement {
                     <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
                         id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
+                        <img src="./Assets/ruth.jpg " class="rounded-circle"
                             height="25" alt="Black and White Portrait of a Man" loading="lazy" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
-                            <a class="dropdown-item" href="#">Mi Perfil</a>
+                            <a class="dropdown-item" href="./mi_perfil.html">Mi Perfil</a>
                         </li>
                         <li>
                         <a class="dropdown-item" href="./editar_perfil.html">Editar Perfil</a>
                     </li>
-                        <li>
-                            <a class="dropdown-item" href="./formulario_registro.html">Registrarse</a>
-                        </li>
                         <li>
                             <a class="dropdown-item" href="./misPublicaciones.html">Mis publicaciones</a>
                         </li>
