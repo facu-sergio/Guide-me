@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head')%>
+<body>
+  <div class="container mt-5">
+    <%-include('partials/navbar')%>
+    <div class="card  mb-5 bg-body rounded mt-2">
+      <div class="card-header">
+        Nueva publicacion
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Titulo (profesion)</label>
+              <input type="text" class="form-control" id="inputTitulo" placeholder="Ej: programador web">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Empresa</label>
+              <input type="text" class="form-control" id="inputEmpresa">
+            </div>
+          </div><!--fin row titulo y empresa-->
+          <div class="row mt-2">
+            <!--<div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Nombre de la carrera que estudiaste</label>
+              <input type="text" class="form-control" id="inputEmpresa">
+            </div>-->
+            <div class="col-md-6">
+              <label for="grado_carreras" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
+              <select class="form-select" aria-label="Default select example" name="grado" id="grado_carreras">
+                <option value="comercio">Comercio internacional</option>
+                <option value="comercio">Gestion Aeroportuaria</option>
+                <option value="software">Desarrollo de software</option>
+                <option value="logistica">Logistica</option>
+                <option value="turismo">Turismo</option>
+                <option value="Hys">Higiene y Seguridad</option>
+              </select>
+            </div>
+          </div><!--fin row nombre carrera etc-->
+          <div class="row mt-2">
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label">Cuerpo de la publicacion</label>
+              <textarea type="text" class="form-control" id="inputAddress2"></textarea>
+            </div>
+          </div><!--fin text area-->
+          
+          
+          
+        </form>
+      </div><!--fin card-body-->
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Publicar</button>
+
+            <button type="submit" class="btn btn-info">Borrador</button>
+          </div>
+        </div>
+      </div>
+    </div><!--fin card general-->
+  </div><!--fin container-->
+
+</body>
+
+</html>
