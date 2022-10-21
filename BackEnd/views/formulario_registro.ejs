@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%-include('partials/head')%>
+</head>
+
+<body>
+    <div class="container">
+        <%-include('partials/navbar')%>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h2>Registro</h2>
+            </div>
+            <!--Fin card-header-->
+            <form id="mi_formulario">
+                <div class="card-body">
+
+                    <div class="row mt-3">
+                        <p class="h3">Datos personales</p>
+                    </div>
+                    <!--Fin primer separador-->
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="nombre_us">Ingrese nombre</label>
+                            <input type="text" class="form-control" id="nombre_us" placeholder="Ej: Cristian">
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="apellido_us">Ingrese apellido</label>
+                            <input type="text" class="form-control" id="apellido_us" placeholder="Ej: Gonzales">
+                        </div>
+
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="fecha_nac">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="imagen">Foto para tu perfil</label>
+                            <input type="file" class="form-control" id="imagen">
+                        </div>
+                    </div><!--Fin de row imagen-->
+                    <div class="row mt-3">
+                        <p class="h3">Datos sesión</p>
+                    </div>
+                    <!--Fin segundo separador-->
+                    <div class="row mt-3">
+
+                        <div class="col-md-6 col-xs-12">
+                            <label class="form-label" for="email_usuario">Ingrese un email</label>
+                            <input type="email" class="form-control" id="email_usuario" placeholder="Ej:pepe@xxx.com">
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <label class="form-label" for="password_usuario">Ingrese una contraseña</label>
+                            <input type="password" class="form-control" id=""
+                                placeholder="Minimo dos una minuscula mayuscula y letras">
+                        </div>
+
+                    </div>
+                    <!--Fin row email y contraseña-->
+                    <div class="row mt-3">
+                        <h4>Datos académicos</h4>
+                    </div>
+                    <!--Fin tercer separador-->
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="usr">Nombre de carrera:</label>
+                            <input type="text" class="form-control" id="usr"
+                                placeholder="Ejemplo:Tecnicatura en sistemas">
+                        </div>
+                        <!--Fin campo nombre carrera-->
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="grado_carreras">Seleccione grado de carrera</label>
+                            <select class="form-select" aria-label="Default select example" name="grado" id="">
+                                <option selected value="" disabled hidden>Seleccione</option>
+                                <option value="de_grado">De grado</option>
+                                <option value="posgrado">Posgrado</option>
+                                <option value="maestria">Maestria</option>
+                            </select>
+                        </div>
+                        <!--Fin select grado carrera-->
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="carreras">Seleccione estado de carrera</label>
+                            <select class="form-select" aria-label="Default select example" name="cars" id="cars">
+                                <option selected value="" disabled hidden>Seleccione</option>
+                                <option value="en_curso">En curso</option>
+                                <option value="finalizado">Finalizado</option>
+                                <option value="abandonado">Abandonado</option>
+                            </select>
+                        </div>
+                        <!--Fin select estado carrera-->
+                    </div>
+                    <!--row general-->
+                    <div class="row mt-3">
+                        <div class="col-md-12 col-xs-12">
+                            <label for="html">Tenés o tuviste experiencia relacionada a tu formación academica?</label>
+                        </div>
+                    </div>
+                    <!--Fin de pregunta academica-->
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-xs-12">
+                            <label class="form-label" for="SI">SI</label>
+                            <input type="radio" id="SI" name="fav_language" value="">
+                            <label class="form-label ms-3" for="NO">NO</label>
+                            <input type="radio" id="NO" name="fav_language" value="">
+                        </div>
+
+                    </div>
+                    <!--Row de RadioS-->
+                </div>
+                <!--Fin card-body-->
+                <div class="card-footer">
+                    <div class="col-sm-1 offset-sm-11 col-xs-1">
+                        <!--El offset corre hacia el lado contrario el elemento-->
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                    <!--Fin row boton-->
+                </div>
+                <!--Fin card-footer-->
+            </form>
+        </div>
+        <!--fin card general-->
+
+    </div>
+    <!--Supuesto fin container-->
+   <!--<menu-footer></menu-footer>--> 
+</body>
+
+</html>
