@@ -9,7 +9,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="./index.css">
+   <!-- <link rel="stylesheet" href="./index.css">-->
     <link rel="stylesheet" href="./css/global.css">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +39,11 @@
                     <div class="row mt-3">
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="nombre_us">Ingrese nombre</label>
-                            <input type="text" class="form-control" id="nombre_us" placeholder="Ej: Cristian">
+                            <input type="text" class="form-control" id="nombre_us" placeholder="Ej: Cristian David">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback text-danger">Ingrese el nombre completo</div>
                         </div>
 
                         <div class="col-md-4 col-xs-12">
@@ -94,7 +98,7 @@
                         <!--Fin campo nombre carrera-->
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="grado_carreras">Seleccione grado de carrera</label>
-                            <select class="form-select" aria-label="Default select example" name="grado" id="">
+                            <select class="form-select" aria-label="Default select example" name="grado" id="grado">
                                 <option selected value="" disabled hidden>Seleccione</option>
                                 <option value="de_grado">De grado</option>
                                 <option value="posgrado">Posgrado</option>
@@ -135,7 +139,7 @@
                 <div class="card-footer">
                     <div class="col-sm-1 offset-sm-11 col-xs-1">
                         <!--El offset corre hacia el lado contrario el elemento-->
-                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary" id="enviar_form">Enviar</button>
                     </div>
                     <!--Fin row boton-->
                 </div>

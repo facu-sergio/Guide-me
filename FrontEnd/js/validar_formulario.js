@@ -1,4 +1,6 @@
+/*
 function validarFormulario(event) {
+    validar = document.querySelector(click,"#enviar_form").value;
     let esValido = true;
 
     // Nombre
@@ -6,7 +8,7 @@ function validarFormulario(event) {
     elNombre.classList.remove('is-invalid');
     // 2 palabras, min 5 y max 50
     // valida largo de string
-    if (elNombre.value.length<5 || elNombre.value.length>50) {
+    if (elNombre.value.length < 5 || elNombre.value.length>60) {
         esValido = false;
         elNombre.classList.add('is-invalid');
     }
@@ -17,7 +19,7 @@ function validarFormulario(event) {
     elApellido.classList.remove('is-invalid');
     // 2 palabras, min 5 y max 50
     // valida largo de string
-    if (elApellido.value.length<5 || elApellido.value.length>20) {
+    if (elApellido.value.length < 5 || elApellido.value.length>20) {
         esValido = false;
         elApellido.classList.add('is-invalid');
     }
@@ -44,10 +46,6 @@ function validarFormulario(event) {
         elApellido.classList.add('is-invalid');
     }
 
-
-
-
-   
     // Mail
     let elMail = document.getElementById('mail');
     // regexp email valido, max 120 caracteres
@@ -75,5 +73,35 @@ function validarFormulario(event) {
     }
     event.preventDefault();
 }
+*/
 
-window.onload = inicio;
+function validar_form(event){
+    event.preventDefault()
+    let bandera= true;
+    
+
+let nombre = document.querySelector("#nombre_us")
+
+if (nombre.value.length < 3 ){
+
+    nombre.classList.add("is-invalid");
+    bandera = false;
+}else{
+    nombre.classList.add("is-valid");
+}
+if (bandera == true) {
+    alert("todo ok")
+}
+}
+
+function inicio(){
+    let formulario = document.querySelector("#mi_formulario")
+    formulario.addEventListener('submit', validar_form)
+    let pattern = /e/;    
+    console.log(pattern.test("nombr"))
+    let text = "How are you doing today?";
+    const myArray = text.split(" ");
+    console.log(myArray);
+
+}
+window.onload= inicio;
