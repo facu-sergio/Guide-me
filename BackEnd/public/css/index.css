@@ -1,0 +1,25 @@
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.tarjetas{
+    max-width: 18rem;
+    min-height: 23rem;
+    max-height: 23rem;
+}
+.cardLogistica{
+    background-color: #89388c ;
+}
+
+.cardSoftware{
+    background-color: #e8b84d;
+}
+.cardComercio{
+    background-color: #5b9fd6;
+}
+
+.cardHigiene{
+    background-color: #0aa49c;
+}
+
