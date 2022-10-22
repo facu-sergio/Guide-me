@@ -92,6 +92,9 @@ if (nombre.value.length < 3 ){
 if (bandera == true) {
     alert("todo ok")
 }
+
+
+
 }
 
 function inicio(){
