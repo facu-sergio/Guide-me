@@ -12,4 +12,5 @@ router.get("/editarperfil",(req,res)=>{
 router.get("/mispublicaciones",(req,res)=>{
   res.render("misPublicaciones");
 })
+
 module.exports = router;
