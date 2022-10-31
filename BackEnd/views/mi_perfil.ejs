@@ -9,11 +9,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="img/ruth.jpg" alt="Admin" class="rounded-circle" width="150">
+                            <img src="uploads/<%= persona[0].FOTO%>" alt="" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4>Ruth iascas</h4>
+                                <h4><%= persona[0].NOMBRE %></h4>
                                 <p class="text-secondary mb-1"></p>
-                                <p class="text-muted font-size-sm">Supervisor de Logistica</p>
+                                <p class="text-muted font-size-sm"><%= persona[0].OFICIO %></p>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                                 <h6 class="mb-0">Nombre completo</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Ruth iascas
+                                <%= persona[0].NOMBRE%> <%=persona[0].APELLIDO %> 
                             </div>
                         </div>
                         <hr>
@@ -36,44 +36,40 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                ruth@gmail.com
+                                <%= persona[0].EMAIL %>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">fecha de nacimiento</h6>
+                                <h6 class="mb-0">Fecha nacimiento</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                31/11/1994
+                                <%= persona[0].FECHA_NAC %>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Datos academicos</h6>
+                                <h6 class="mb-0">Datos Academicos</h6>
                             </div>
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Nombre de la carrera</h6>
+                                <h6>Carrera</h6>
                             </div>
                             <div class="col-sm-3">
-                                <h6 >Grado de la carrera</h6>
-                            </div>
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Estado de la carrera</h6>
+                                <h6>Universidad</h6>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3 offset-sm-3 text-secondary">
-                                Logistica
+                        <% for(let i=0;i<persona.length;i++){%>
+                            <div class="row">
+                                <div class="col-sm-3 offset-sm-3 text-secondary">
+                                   <%= estudios[i].NOMBRE_CARRERA %>
+                                </div>
+                                <div class="col-sm-3  text-secondary">
+                                    <%= estudios[i].UNIVERSIDAD %>
+                                 </div>
                             </div>
-                            <div class="col-sm-3 text-secondary">
-                                Postgrado
-                            </div>
-                            <div class="col-sm-3  text-secondary">
-                                Finalizada
-                            </div>
-                        </div>
+                        <%}%>                     
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">

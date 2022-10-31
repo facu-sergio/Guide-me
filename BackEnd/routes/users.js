@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const {authMiddleware} = require('../middlewares/auth_middleware')
+const persona_controller = require('../controllers/persona_controller');
 
-router.get("/miperfil", (req, res) => {
-  res.render("mi_perfil");
-});
+
+
+router.get("/miperfil",authMiddleware, persona_controller.getUser)
 
 router.get("/editarperfil",(req,res)=>{
   res.render("editar_perfil");

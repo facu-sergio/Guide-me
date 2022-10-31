@@ -1,25 +1,41 @@
 const express = require('express')
 const router = express.Router();
+const persona = require('../models/persona');
+const controller_auth =  require('../controllers/auth_controller')
+const {authMiddleware} = require("../middlewares/auth_middleware");
+const { application } = require('express');
+const path = require('node:path');
 
-const classUser = require('../models/users');
 
-router.get('/login',(req,res)=>{
+
+
+
+router.get('/login', (req,res)=>{
     res.render('login');
-})
+});
 
-router.post('/login', async (req, res) => {
-    let user = await classUser.checkLogin(req.body.email, req.body.password);
+
+router.post('/login',async (req, res) => {
+    let user = await persona.checkLogin(req.body)
     if (user) {
-        req.session.user = user.id;
-        console.log('logueo TODO BIEN');
-        res.redirect('home');
+        req.session.user = user.email;
+        res.redirect('/');
     } else {
-        console.log('logueo TODO MAL');
         res.redirect('login');
     }
 });
-router.get("/logout",(req,res)=>{
+
+router.get('/logout', authMiddleware, (req, res) => {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect('/');
+});
+
+
+
+router.get("/registrarse",(req,res)=>{
+    res.render("formulario_registro")
 })
+
+router.post("/registrarse", controller_auth.savePersona);
+
 module.exports = router;
