@@ -65,10 +65,10 @@
                     </div>
                     <!--Fin tercer separador-->
 
-                    <div class="row mt-3">
-                        <div class="col-md-4 col-xs-12">
-                            <label class="form-label" for="usr">Nombre de carrera:</label>
-                            <input type="text" class="form-control" id="usr" name="carrera" value="TECNICATURA EN SOFTWARE"
+                    <div class="row mt-3" >
+                        <div class="col-md-4 col-xs-12" >
+                            <label class="form-label" for="carrera0">Nombre de carrera:</label>
+                            <input type="text" class="form-control" id="carrera0" name="carrera0" value="TECNICATURA EN SOFTWARE"
                                 placeholder="Ejemplo:Tecnicatura en sistemas">
                         </div>
                         <!--Fin campo nombre carrera-->
@@ -76,10 +76,22 @@
                             <label class="form-label" for="universidad">Universidad</label>
                             <input  class="form-control" type="text" name="universidad" value="UPE">
                         </div>
-                        <!--Fin de universidad-->
-                        
-                        
                     </div>
+                    <div class="row" id="rowCarreras">
+                        <div class="col-md-4 col-xs-12" id="divCarrera">
+
+                        </div>
+                        <div class="col-md-4 col-xs-12" id="divUniversidad">
+
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4 col-xs-12">
+                            <button type="button" class="btn btn-labeled btn-dark" id="addCarrera">
+                                <span class="btn-label"><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Agregar</button>
+                        </div>
+                    </div>
+                     <!--Fin de universidad-->
                     <!--row general-->
                     <div class="row mt-3">
                         <div class="col-md-12 col-xs-12">
@@ -119,6 +131,7 @@
     </div>
     <!--Supuesto fin container-->
    <!--<menu-footer></menu-footer>--> 
+   <script src="js/form_registro.js"></script>
 </body>
 
 </html>
