@@ -1,8 +1,9 @@
 const connection = require("../config/db");
 const { use } = require("../routes");
 const bcryptjs = require("bcryptjs");
+let idPersona;
 class User {
-  constructor(rol, nombre, apellido, foto, email, password, fecha_nac, oficio, carrera, universidad) {
+  constructor(rol, nombre, apellido, foto, email, password, fecha_nac, oficio) {
     this.rol = rol;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -11,8 +12,6 @@ class User {
     this.password = password;
     this.fecha_nac = fecha_nac;
     this.oficio =  oficio;
-    this.carrera =  carrera;
-    this.universidad =  universidad;
   }
   async save(){
     //QUERY PERSONAS
@@ -22,35 +21,26 @@ class User {
             queryStr,
             [this.rol, this.nombre, this.apellido, this.foto, this.email, this.password, this.fecha_nac, this.oficio ],
         );
-        let idPersona = result.insertId;
-
-        //query estudios
-        let queryStr2 = 'INSERT INTO `estudios` (`NOMBRE_CARRERA`, `UNIVERSIDAD`) VALUES (?,?)';
-        let result2, fields2;
-        [ result2, fields2 ] = await connection.query(
-            queryStr2,
-            [this.carrera,this.universidad ],
-        );
-        let idEstudios = result2.insertId;
-        
-       ///query tabla pivot
-        let queryStr3 = 'INSERT INTO `persona_estudios` (`ID_PERSONA`, `ID_ESTUDIO`) VALUES (?,?)';
-        let result3, fields3;
-        [ result3, fields3 ] = await connection.query(
-            queryStr3,
-            [idPersona,idEstudios ],
-        );
-        return this;
+         idPersona = result.insertId;
     }
   static async saveEstudios(nombre,universidad){
-    let queryStr = 'INSERT INTO `estudios` (`NOMBRE_CARRERA`, `UNIVERSIDAD`) VALUES (?,?)';
-        let result, fields;
-        [ result, fields ] = await connection.query(
-            queryStr,
-            [nombre,universidad ],
-        );
-        this.id = result.insertId;
-        return this;
+    //query estudios
+    let queryStr2 = 'INSERT INTO `estudios` (`NOMBRE_CARRERA`, `UNIVERSIDAD`) VALUES (?,?)';
+    let result2, fields2;
+    [ result2, fields2 ] = await connection.query(
+        queryStr2,
+        [nombre,universidad ],
+    );
+    let idEstudios = result2.insertId;
+    
+   ///query tabla pivot
+    let queryStr3 = 'INSERT INTO `persona_estudios` (`ID_PERSONA`, `ID_ESTUDIO`) VALUES (?,?)';
+    let result3, fields3;
+    [ result3, fields3 ] = await connection.query(
+        queryStr3,
+        [idPersona,idEstudios ],
+    );
+    return this;
   }
   
   static async getUserByEmail(email) {

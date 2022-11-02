@@ -10,19 +10,19 @@ function mostrar(){
     let inputUniversidad =  document.createElement("input");
     let labelUniversidad = document.createElement("label");
 
-    inputCarrera.setAttribute(`name`,`carrera${i}`);
-    inputCarrera.setAttribute(`id`,`carrera${i}`);
+    inputCarrera.setAttribute(`name`,`carrera[]`);
+    inputCarrera.setAttribute(`id`,`carrera[]`);
     inputCarrera.setAttribute(`class`,`form-control`);
     inputCarrera.setAttribute(`type`,`text`);
-    labelCarrera.setAttribute(`for`,`carrera${i}`);
+    labelCarrera.setAttribute(`for`,`carrera[]`);
     labelCarrera.setAttribute(`class`,`form-label mt-2`)
     labelCarrera.innerHTML = "Nombre de carrera:";
 
-    inputUniversidad.setAttribute(`name`,`universidad${i}`);
-    inputUniversidad.setAttribute(`id`,`universidad${i}`);
+    inputUniversidad.setAttribute(`name`,`universidad[]`);
+    inputUniversidad.setAttribute(`id`,`universidad[]`);
     inputUniversidad.setAttribute(`class`,`form-control`);
     inputUniversidad.setAttribute(`type`,`text`);
-    labelUniversidad.setAttribute(`for`,`universidad${i}`);
+    labelUniversidad.setAttribute(`for`,`universidad[]`);
     labelUniversidad.setAttribute(`class`,`form-label mt-2`)
     labelUniversidad.innerHTML = "Universidad:";
 
