@@ -1,10 +1,15 @@
 const connection = require("../config/db");
 
 class publicacion {
-  constructor(titulo, empresa, cuerpo) {
+  constructor(idPersona,carrera,titulo, empresa, cuerpo,borradol,fechaHora,moderacion) {
+    this.idPersona = idPersona;
+    this.carrera = carrera;
     this.titulo = titulo;
     this.empresa = empresa;
     this.cuerpo = cuerpo;
+    this.borradol = borradol;
+    this.fechaHora = fechaHora;
+    this.moderacion = moderacion;
   }
 
   static async getAll() {
