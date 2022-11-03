@@ -49,6 +49,9 @@ app.use(multer({
   }).single('image'));
 
 
+  const { authUserMiddleware } = require('./middlewares/auth_middleware');
+  app.use(authUserMiddleware);
+
 //Routes
 app.use(routes_index);
 app.use(routes_users)

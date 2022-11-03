@@ -1,6 +1,7 @@
 const connection = require("../config/db");
 const { use } = require("../routes");
 const bcryptjs = require("bcryptjs");
+const Publicacion = require('../models/publicacion')
 let idPersona;
 class User {
   constructor(rol, nombre, apellido, foto, email, password, fecha_nac, oficio) {
@@ -38,7 +39,7 @@ class User {
     let result3, fields3;
     [ result3, fields3 ] = await connection.query(
         queryStr3,
-        [idPersona,idEstudios ],
+        [idPersona,idEstudios],
     );
     return this;
   }
@@ -65,8 +66,6 @@ class User {
     [rows, fields] = await connection.query(queryStr, [email]);
     return rows;
   }
-
-  
 
   static async checkLogin(dataForm) {
     let email = dataForm.email;

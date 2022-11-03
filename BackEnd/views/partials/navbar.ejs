@@ -31,15 +31,20 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/crearpublicacion">Crear publicacion</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
-                    </li>
-                    <li>
-                        <a class="nav-link active" aria-current="page" href="/registrarse">Registrarse</a>
-                    </li>
+                    
+                    
+                    
                 </ul>
-        
+                <% if(!locals.userLogged){%>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                </ul>
+                <ul class="navbar-nav ms-3 mb-2 mb-lg-0">
+                    <a class="nav-link active ms-auto" aria-current="page" href="/registrarse">Registrarse</a>
+                </ul>
+                <%}%>
                 <!--Notificaciones-->
+                <% if(locals.userLogged){%>
                 <div class="dropdown">
                     <button class=" btn text-reset me-3 dropdown-toggle hidden-arrow " href="#" id="navbarDropdownMenuLink"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,30 +60,32 @@
                         </li>
                     </ul>
                 </div>
+                <%}%>
                 <!--Perfil-->
-                <div class="dropdown">
-                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
-                        id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img src="img/ruth.jpg" class="rounded-circle"
-                            height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                        <li>
-                            <a class="dropdown-item" href="/miperfil">Mi Perfil</a>
+                <% if(locals.userLogged){%>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                            id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="uploads/<%= locals.userLogged[0].FOTO%>" class="rounded-circle"
+                                height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item" href="/miperfil">Mi Perfil</a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="/editarperfil">Editar Perfil</a>
                         </li>
-                        <li>
-                        <a class="dropdown-item" href="/editarperfil">Editar Perfil</a>
-                    </li>
-                        <li>
-                            <a class="dropdown-item" href="/mispublicaciones">Mis publicaciones</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-
+                            <li>
+                                <a class="dropdown-item" href="/mispublicaciones">Mis publicaciones</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                <%}%>
             </div>
         </div>
         </nav>
