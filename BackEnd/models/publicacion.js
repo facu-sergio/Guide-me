@@ -14,6 +14,7 @@ class publicacion {
   }
   async savePublicacion(){
     let queryStr = 'INSERT INTO `publicaciones` (`ID_PERSONA`, `ID_CAR_UPE`, `TITULO`, `EMPRESA`,`CUERPO`,`ESTADO`,`BORRADO_L`,`FECHA_HORA`,`MOTIVO_MODERACION`) VALUES (?,?,?,?,?,?,?,?,?)';
+    let result, fields;
     [ result, fields ] = await connection.query(
       queryStr,
       [this.idPersona, this.carrera, this.titulo, this.empresa, this.cuerpo,this.estado, this.borradol, this.fechaHora, this.moderacion ],
