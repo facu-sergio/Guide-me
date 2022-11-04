@@ -38,7 +38,7 @@ app.use(multer({
     storage,
     dest: path.join(__dirname,'/public/uploads'),
     fileFilter: (req, file, cb)=>{
-      const filetypes = /jpeg|jpg|pgn/;
+      const filetypes = /jpeg|jpg|png/;
       const mimetype = filetypes.test(file.mimetype);
       const extname =  filetypes.test(path.extname(file.originalname));
       if(mimetype && extname ){

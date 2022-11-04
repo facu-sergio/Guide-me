@@ -22,17 +22,20 @@
                     <div class="row mt-3">
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="nombre_us">Ingrese nombre</label>
-                            <input type="text" value="facundo" class="form-control" name="nombre" id="nombre_us" placeholder="Ej: Cristian">
+                            <input type="text" value="facundo" class="form-control" name="nombre" id="nombre" placeholder="Ej: Cristian">
+                            <div class="invalid-feedback text-warning">Ingrese un nombre</div>
                         </div>
 
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="apellido_us">Ingrese apellido</label>
-                            <input type="text" value="sergio" class="form-control" name="apellido" id="apellido_us" placeholder="Ej: Gonzales">
+                            <input type="text" value="sergio" class="form-control" name="apellido" id="apellido" placeholder="Ej: Gonzales">
+                            <div class="invalid-feedback text-warning">Ingrese un apellido</div>
                         </div>
 
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
                             <input type="date" value="1994-11-14" class="form-control" name="fecha_nac" id="fecha_nac">
+                            <div class="invalid-feedback text-warning">Fecha invalida maximo 31/12/2004 </div>
                         </div>
                     </div>
 
@@ -40,6 +43,7 @@
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="imagen">Foto para tu perfil</label>
                             <input type="file" class="form-control" id="imagen" name="image">
+                            <div class="invalid-feedback text-warning">Ingrese una imagen valida .jpg o .jpeg</div>
                         </div>
                     </div><!--Fin de row imagen-->
                     <div class="row mt-3">
@@ -50,12 +54,14 @@
 
                         <div class="col-md-6 col-xs-12">
                             <label class="form-label" for="email_usuario">Ingrese un email</label>
-                            <input type="email" class="form-control" id="email_usuario" name="email" placeholder="Ej:pepe@xxx.com" value="facu11ja@gmail.com" >
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Ej:pepe@xxx.com" value="facu11ja@gmail.com" >
+                            <div class="invalid-feedback text-warning">Ingrese un email valido</div>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <label class="form-label" for="password_usuario">Ingrese una contraseña</label>
-                            <input type="password" value="1234" class="form-control" id="" name="password"
-                                placeholder="Minimo dos una minuscula mayuscula y letras">
+                            <input type="password" value="1234" class="form-control" id="password" name="password"
+                            placeholder="Minimo dos una minuscula mayuscula y letras">
+                            <div class="invalid-feedback text-warning">Contraseña invalida mínimo ocho caracteres, al menos una letra y un número</div>    
                         </div>
 
                     </div>
@@ -68,13 +74,15 @@
                     <div class="row mt-3" >
                         <div class="col-md-4 col-xs-12" >
                             <label class="form-label" for="carrera[]">Nombre de carrera:</label>
-                            <input type="text" class="form-control" id="carrera0" name="carrera[]" value="TECNICATURA EN SOFTWARE"
-                                placeholder="Ejemplo:Tecnicatura en sistemas">
+                            <input type="text" class="form-control" id="carrera" name="carrera[]" value="TECNICATURA EN SOFTWARE"
+                            placeholder="Ejemplo:Tecnicatura en sistemas">
+                            <div class="invalid-feedback text-warning">Ingrese una carrera</div>
                         </div>
                         <!--Fin campo nombre carrera-->
                         <div class="col-md-4 col-xs-12">
                             <label class="form-label" for="universidad[]">Universidad</label>
-                            <input  class="form-control" type="text" name="universidad[]" value="UPE">
+                            <input  class="form-control" type="text" id="universidad" name="universidad[]" value="UPE">
+                            <div class="invalid-feedback text-warning">Ingrese una universidad</div>
                         </div>
                     </div>
                     <div class="row" id="rowCarreras">
