@@ -5,7 +5,7 @@ module.exports.savePersona = async (req,res)=>{
     let rol;
     let password = await bcryptjs.hash(req.body.password, 8);
     if(req.body.oficio==""){
-        rol = 1
+        rol = 3
     }else{
         rol = 2;
     }
@@ -16,6 +16,7 @@ module.exports.savePersona = async (req,res)=>{
     }
     res.redirect("/")
 }
+
 module.exports.getUser = async (req,res)=>{
     let persona
     let estudios;

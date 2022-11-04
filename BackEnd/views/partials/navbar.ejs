@@ -28,11 +28,14 @@
                             <li><a class="dropdown-item" href="#">Higiene y Seguridad</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/crearpublicacion">Crear publicacion</a>
-                    </li>
                     
-                    
+                    <% if(locals.userLogged){%>
+                        <% if(locals.userLogged[0].ID_ROL==2){%>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/crearpublicacion">Crear publicacion</a>
+                            </li>
+                        <% } %>
+                    <% } %>
                     
                 </ul>
                 <% if(!locals.userLogged){%>
@@ -77,9 +80,11 @@
                             <li>
                             <a class="dropdown-item" href="/editarperfil">Editar Perfil</a>
                         </li>
+                        <%if(locals.userLogged[0].ID_ROL==2){%>
                             <li>
                                 <a class="dropdown-item" href="/mispublicaciones">Mis publicaciones</a>
                             </li>
+                         <%}%>   
                             <li>
                                 <a class="dropdown-item" href="/logout">Logout</a>
                             </li>
