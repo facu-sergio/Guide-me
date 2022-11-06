@@ -1,6 +1,7 @@
 const Persona = require('../models//persona');
 const Estudio = require('../models/estudios');
 const bcryptjs = require('bcryptjs');
+
 module.exports.savePersona = async (req,res)=>{
     let rol;
     let password = await bcryptjs.hash(req.body.password, 8);

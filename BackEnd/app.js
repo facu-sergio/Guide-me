@@ -29,7 +29,7 @@ app.use(express.static('public'));
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
 app.use(cookieParser('secret'));
-app.use(session({ cookie: { maxAge: 60000 }, 
+app.use(session({ cookie: { maxAge: 300000 }, 
   secret: 'woot',
   resave: false, 
   saveUninitialized: false}));

@@ -28,12 +28,9 @@
             <div class="col-md-6">
               <label for="grado_carreras" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
               <select class="form-select" aria-label="Default select example" name="carrera"  id="carrera">
-                <option value="1">Comercio internacional</option>
-                <option value="2">Gestion Aeroportuaria</option>
-                <option value="3">Desarrollo de software</option>
-                <option value="4">Logistica</option>
-                <option value="5">Turismo</option>
-                <option value="6">Higiene y Seguridad</option>
+                <% for(let i=0;i<carreras.length;i++) { %>
+                <option value="<%=carreras[i].ID_CAR_UPE%>"><%=carreras[i].NOMBRE%></option>
+                <% } %>
               </select>
             </div>
           </div><!--fin row nombre carrera etc-->

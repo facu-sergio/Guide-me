@@ -22,7 +22,14 @@ class publicacion {
   
   }
   static async getAll() {
-    let queryStr = "SELECT * FROM `publicaciones`";
+    let queryStr = "SELECT * FROM `publicaciones` ORDER BY `ID_PUBLICACION` DESC";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr, []);
+    return rows;
+  }
+
+  static async getCarreras(){
+    let queryStr = "SELECT * FROM `carreras_upe`";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr, []);
     return rows;

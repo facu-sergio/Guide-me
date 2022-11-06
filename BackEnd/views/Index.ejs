@@ -37,155 +37,34 @@
                         alt=""></a>
             </div>
         </div>
-
-        <div class="row mt-4">
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 18rem;">
-                    <div class="card-header text-center">
-                        <img src="img/ruth.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Ruth iascas</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Supervisor de Logistica</p>
-                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
-                            años...
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3 tarjetas cardSoftware">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/garrido.jfif" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Nicolas Garrido</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-white">Ingeniero De software</p>
-                        <p class="text-light ">Hola ¿Como estan? soy Nicolas Garrido trabajo como ingeniero de software...
-                            
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
+            <div class="row mt-4">
+                <!--comienza tarjeta-->
+                <% for(let i=0;i<publicaciones.length;i++){ %>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="card border border-3 border-dark mb-3 tarjetas card<%=publicaciones[i].ID_CAR_UPE%>" style="max-width: 18rem;">
+                        <div class="card-header text-center">
+                            <img src="uploads/<%= fotos[i]%>" width="60" height="60" height="80" alt="">
+                            <p class="h4 text-light"><%= nombres[i]%> <%= apellidos[i]%> </p>
+                        </div>
+                        <div class="card-body text-primary">
+                            <p class="h3 text-light"><%= publicaciones[i].TITULO %></p>
+                            <div class="text-light " id="cuerpo" ><%= publicaciones[i].CUERPO %>
+                            </div>
+                            <a href="/publicacion?id=<%= publicaciones[i].ID_PUBLICACION %>" class="text-light">Ver publicación Completa</a>
+                        </div>
                     </div>
                 </div>
+                <%}%>
             </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3  tarjetas cardComercio">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/Comerciante.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Sebastian Lopez</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light"></p>
-                        <p class="text-light ">
-
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
-                <div class="card border border-3 border-dark mb-3  tarjetas cardHigiene ">
-                    <div class="card-header text-center">
-                        <img src="img/AndresRoldan.png" class="rounded" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Andres Roldan</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Analista de Seguridad y Higiene</p>
-                        <p class="text-light ">Buenas soy Andres Roldan estudie seguridad y higiene en la upe y
-                            actualmente
-                            trabajo como...
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-        </div>
-        <div class="row mt-4">
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 18rem;">
-                    <div class="card-header text-center">
-                        <img src="img/ruth.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Ruth iascas</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Supervisor de Logistica</p>
-                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
-                            años...
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3 tarjetas cardSoftware">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/garrido.jfif" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Nicolas Garrido</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-white">Ingeniero De software</p>
-                        <p class="text-light ">Hola ¿Como estan? soy Nicolas Garrido trabajo como ingeniero de software...
-                    
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <div class="card border border-3 border-dark mb-3  tarjetas cardComercio">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/Comerciante.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Sebastian Lopez</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Comerciante</p>
-                        <p class="text-light ">Buenas mi nombre es sebastian lopez egrasado de comercio internacional en
-                            la
-                            upe actualmente trabajo como...
-
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 ">
-                <div class="card border border-3 border-dark mb-3  tarjetas cardHigiene ">
-                    <div class="card-header text-center">
-                        <img src="img/AndresRoldan.png" class="rounded" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Andres Roldan</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Analista de Seguridad y Higiene</p>
-                        <p class="text-light ">Buenas soy Andres Roldan estudie seguridad y higiene en la upe y
-                            actualmente
-                            trabajo como...
-                        </p>
-                        <a href="/publicacion" class="text-light">Ver publicación Completa</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
+                <!--fin de tarjeta-->
+        
+        
+           
         </div>
 
     </div><!-- container -->
 
-    
+    <script src="js/index.js"></script>
 </body>
 
 </html>

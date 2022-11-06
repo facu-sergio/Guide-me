@@ -3,9 +3,7 @@ const router = express.Router();
 const {authMiddleware} = require('../middlewares/auth_middleware');
 const publicacion_controller =  require('../controllers/publicacion_controller');
 
-router.get('/crearpublicacion',authMiddleware,(req,res)=>{
-    res.render('form-publicacion')
-})
+router.get('/crearpublicacion',authMiddleware,publicacion_controller.getFormulario);
 
 router.post('/crearpublicacion',authMiddleware,publicacion_controller.savePublicacion);
 

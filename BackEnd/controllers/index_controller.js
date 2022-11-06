@@ -1,5 +1,17 @@
 const publicacion =  require('../models/publicacion');
- module.exports.mostrar = async (req,res)=>{
-    const rows = await publicacion.getAll();
-    res.render('index',{rows});
+const Persona = require('../models/persona')
+
+
+ module.exports.mostrarPublicaciones = async (req,res)=>{
+    let publicaciones = await publicacion.getAll();
+    let nombres = [];
+    let apellidos = [];
+    let fotos = [];
+    for(let i = 0;i<publicaciones.length;i++){
+       let persona = await Persona.getUser(publicaciones[i].ID_PERSONA);
+       fotos.push(persona[0].FOTO)
+       nombres.push(persona[0].NOMBRE)
+       apellidos.push(persona[0].APELLIDO)
+    }
+    res.render('index',{publicaciones,fotos,nombres,apellidos});
 }

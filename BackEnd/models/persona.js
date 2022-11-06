@@ -75,7 +75,7 @@ class User {
         return rows;
       }*/
 
-  /* static async getUser(id) {
+  static async getUser(id) {
         let queryStr = "SELECT * FROM `personas` WHERE ID_PERSONA = ?";
         let rows, fields;
         [rows, fields] = await connection.query(queryStr, [id]);
@@ -84,7 +84,7 @@ class User {
           return rows;
         }
         return;
-      }*/
+      }
 }
 
 module.exports = User;

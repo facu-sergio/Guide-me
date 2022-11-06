@@ -20,3 +20,8 @@ module.exports.savePublicacion = async(req,res)=>{
     nuevaPubli.savePublicacion();
     res.redirect('/');
 }
+
+module.exports.getFormulario = async(req,res)=>{
+    let carreras = await publicacion.getCarreras();
+    res.render('form-publicacion',{carreras});
+}

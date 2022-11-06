@@ -100,14 +100,14 @@ function validar(e){
 
     //valido email
     if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
-        bool = false;
+        flag = false;
         email.classList.add('is-invalid');
     }else{
         email.classList.add('is-valid');
     }
      //valido password
     if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password.value)){
-        bool = false;
+        flag = false;
         password.classList.add('is-invalid');
     }else{
         password.classList.add('is-valid');
