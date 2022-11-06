@@ -7,12 +7,12 @@
     <div class="card text-center mt-4 shadow mb-3">
       <div class="card-header">
         <div class="col-md-4 col-xs-12 offset-md-4">
-          <img src="img/garrido.jfif" alt="" class="rounded ms-5" height="100px"> <button
+          <img src="uploads/<%= persona[0].FOTO%> " alt="" class="rounded ms-5" height="100px"> <button
             class="btn btn-success btn-sm ms-2">Seguir</button>
         </div>
         <div class="row">
           <div class="col-md-4 col-xs-12 offset-md-4">
-            <p class="h4">Nicolas garrido </p>
+            <p class="h4"><%= persona[0].NOMBRE%> <%= persona[0].APELLIDO %></p>
           </div>
           <div class="col-md-1 ">
 
@@ -20,7 +20,7 @@
         </div>
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <p class="h4">Ingeniero de software en Engee It </p>
+            <p class="h4"><%= publicacion[0].TITULO%></p>
           </div>
         </div>
       </div>
@@ -28,36 +28,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-7 offset-md-3">
-            <p class="">Hola, ¿cómo están? soy Nicolas Garrido trabajo como ingeniero de software en la empresa Engee It .
-              quería
-
-              contarles mi experiencia trabajando como ingeniero de software que puede interesarles mucho a los
-
-              estudiantes de la Carrera "tecnicatura en software" de la upe
-
-              . Trabajo hace 10 años en una empresa dedicada
-
-              a Desarrollo de software,
-
-              principalmente me encargo de dirigir los proyectos de software nuevos o de mantenimiento, también tengo la
-
-              tarea
-
-              de analizar nuevas técnicas para desarrollar, optimizar los procesos y principalmente lidar equipos de
-
-              trabajo.
-
-              Por medio de todas estas actividades tengo que asegurarme de cumplir el 100% de los objetivos de cada
-
-              proyecto, que el software
-
-              tenga muy buena usabilidad, que sea seguro, flexible y portable.
-
-              Si quieren saber algo en especifico no duden en preguntarme en los comentarios con gusto estaré
-
-              respondiendo
-
-              Un saludo!
+            <p class=""><%= publicacion[0].CUERPO%>
             </p>
           </div>
         </div>
@@ -88,13 +59,15 @@
 
                 </div>
               </div>
+            <%if(locals.userLogged){%>
               <div class="bg-light p-2">
-                <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="img/ruth.jpg"
+                <div class="d-flex flex-row align-items-start "><img class="rounded-circle me-1" src="uploads/<%=locals.userLogged[0].FOTO%>"
                     width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
                 <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Enviar
                     comentario</button> <button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
                     type="button">Cancel</button></div>
               </div>
+            <%}%>
             </div>
           </div>
         </div>

@@ -31,12 +31,10 @@ class User {
     [rows, fields] = await connection.query(queryStr, [email]);
   
     if (rows.length > 0) {
-      console.log("traigo resultados")
       return rows;
       
       //let userloged = new User(rows[0]);
     }else{
-      console.log("NO traigo resultados")
     }
     return;
   }

@@ -21,10 +21,17 @@ class publicacion {
   );
   
   }
-  static async getAll() {
-    let queryStr = "SELECT * FROM `publicaciones` ORDER BY `ID_PUBLICACION` DESC";
+  static async getPublicadas() {
+    let queryStr = "SELECT * FROM `publicaciones` WHERE `ESTADO`= ?  ORDER BY `ID_PUBLICACION` DESC";
     let rows, fields;
-    [rows, fields] = await connection.query(queryStr, []);
+    [rows, fields] = await connection.query(queryStr, ["publicada"]);
+    return rows;
+  }
+
+  static async getPublicacion(id){
+    let queryStr = "SELECT * FROM `publicaciones` WHERE`ID_PUBLICACION`= ?";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr, [id]);
     return rows;
   }
 

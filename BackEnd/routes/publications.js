@@ -7,9 +7,7 @@ router.get('/crearpublicacion',authMiddleware,publicacion_controller.getFormular
 
 router.post('/crearpublicacion',authMiddleware,publicacion_controller.savePublicacion);
 
-router.get('/publicacion',(req,res)=>{
-    res.render('publicacion')
-})
+router.get('/publicacion',publicacion_controller.getPublicacion);
 
 router.get('/editarpublicacion',(req,res)=>{
     res.render('editar_publicacion')

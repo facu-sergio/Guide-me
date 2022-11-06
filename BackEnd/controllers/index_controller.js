@@ -3,7 +3,7 @@ const Persona = require('../models/persona')
 
 
  module.exports.mostrarPublicaciones = async (req,res)=>{
-    let publicaciones = await publicacion.getAll();
+    let publicaciones = await publicacion.getPublicadas();
     let nombres = [];
     let apellidos = [];
     let fotos = [];
