@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const {authMiddleware} = require('../middlewares/auth_middleware');
+const {rolMiddleware} = require('../middlewares/auth_middleware');
 const publicacion_controller =  require('../controllers/publicacion_controller');
 
-router.get('/crearpublicacion',authMiddleware,publicacion_controller.getFormulario);
+router.get('/crearpublicacion',authMiddleware,rolMiddleware,publicacion_controller.getFormulario);
 
-router.post('/crearpublicacion',authMiddleware,publicacion_controller.savePublicacion);
+router.post('/crearpublicacion',authMiddleware, publicacion_controller.savePublicacion);
 
 router.get('/publicacion',publicacion_controller.getPublicacion);
 

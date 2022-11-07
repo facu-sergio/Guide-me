@@ -12,11 +12,20 @@ const authMiddleware = (req, res, next) => {
 
 const authGuestMiddleware = (req, res, next) => {
     if (req.session && req.session.user) {
-        res.redirect('/');
+        
     } else {
         next();
     }
 };
+
+const rolMiddleware =  async (req, res, next)=>{
+    console.log(req.session.rol )
+    if (req.session.rol == 2) {
+        next();
+    }else{
+        res.redirect('/');
+    }
+}
 
 const authUserMiddleware =  async (req, res, next)=>{
     if (req.session && req.session.user) {
@@ -29,4 +38,4 @@ const authUserMiddleware =  async (req, res, next)=>{
     next();
 }
 
-module.exports = {authMiddleware,authUserMiddleware,authGuestMiddleware};
+module.exports = {authMiddleware,authUserMiddleware,authGuestMiddleware,rolMiddleware};
