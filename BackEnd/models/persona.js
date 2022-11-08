@@ -60,7 +60,11 @@ class User {
             rows[0].FECHA_NAC,
             rows[0].OFICIO
           );
+        }else{
+          return "Contraseña Incorrecta"
         }
+      }else{
+        return "Error email no existe"
       }
     }
   }

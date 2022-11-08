@@ -1,5 +1,4 @@
 const User = require('../models/persona');
-
 //verifica si hay session si no te manda al login
 const authMiddleware = (req, res, next) => {
     if (req.session && req.session.user) {
@@ -19,7 +18,6 @@ const authGuestMiddleware = (req, res, next) => {
 };
 
 const rolMiddleware =  async (req, res, next)=>{
-    console.log(req.session.rol )
     if (req.session.rol == 2) {
         next();
     }else{
