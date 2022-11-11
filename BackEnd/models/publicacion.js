@@ -41,5 +41,13 @@ class publicacion {
     [rows, fields] = await connection.query(queryStr, []);
     return rows;
   }
+
+  static async getPublicacionByCarrera(idCarrera){
+    let queryStr = "SELECT * FROM `publicaciones` where `ID_CAR_UPE`= ?";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr, [idCarrera]);
+    return rows;
+  }
+
 }
 module.exports = publicacion;

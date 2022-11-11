@@ -1,6 +1,5 @@
 const Persona = require('../models//persona');
 const Estudio = require('../models/estudios');
-const {getFechaHora} = require('../controllers/publicacion_controller')
 const bcryptjs = require('bcryptjs');
 
 module.exports.savePersona = async (req,res)=>{

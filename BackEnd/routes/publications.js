@@ -10,6 +10,7 @@ router.post('/crearpublicacion',authMiddleware, publicacion_controller.savePubli
 
 router.get('/publicacion',publicacion_controller.getPublicacion);
 
+router.get('/publicaciones',publicacion_controller.getPublicacionByCarrera);
 router.get('/editarpublicacion',(req,res)=>{
     res.render('editar_publicacion')
 })

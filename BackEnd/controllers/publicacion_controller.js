@@ -27,6 +27,21 @@ module.exports.getPublicacion = async(req,res)=>{
     res.render('publicacion',{publicacion,persona});
 }
 
+module.exports.getPublicacionByCarrera = async(req,res)=>{
+    let publicaciones =  await Publicacion.getPublicacionByCarrera(req.query.id)
+    let nombres = [];
+    let apellidos = [];
+    let fotos = [];
+    let carrera = req.query.id;
+    for(let i = 0;i<publicaciones.length;i++){
+       let persona = await Persona.getUser(publicaciones[i].ID_PERSONA);
+       fotos.push(persona[0].FOTO)
+       nombres.push(persona[0].NOMBRE)
+       apellidos.push(persona[0].APELLIDO)
+    }
+    res.render('publicaciones_carrera',{publicaciones,fotos,nombres,apellidos,carrera});
+}
+
 module.exports.getFormulario = async(req,res)=>{
     let carreras = await Publicacion.getCarreras();
     res.render('form-Publicacion',{carreras});
