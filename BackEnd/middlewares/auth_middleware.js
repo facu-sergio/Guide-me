@@ -11,7 +11,7 @@ const authMiddleware = (req, res, next) => {
 
 const authGuestMiddleware = (req, res, next) => {
     if (req.session && req.session.user) {
-        
+        res.redirect('/');
     } else {
         next();
     }

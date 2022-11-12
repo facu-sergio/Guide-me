@@ -49,5 +49,12 @@ class publicacion {
     return rows;
   }
 
+  static async getPublicacionByTitulo(titulo){
+    let queryStr = "SELECT * FROM `publicaciones`WHERE `TITULO` LIKE ?";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr,['%'+titulo+'%']);
+    return rows;
+  }
+
 }
 module.exports = publicacion;

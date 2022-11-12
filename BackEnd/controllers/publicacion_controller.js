@@ -1,5 +1,6 @@
 const Publicacion = require('../models/Publicacion');
 const Persona = require('../models/persona');
+const publicacion = require('../models/Publicacion');
 
 function getFechaHora(){
     const t = new Date();
@@ -40,6 +41,21 @@ module.exports.getPublicacionByCarrera = async(req,res)=>{
        apellidos.push(persona[0].APELLIDO)
     }
     res.render('publicaciones_carrera',{publicaciones,fotos,nombres,apellidos,carrera});
+}
+
+module.exports.search = async(req,res)=>{
+    let publicaciones = await publicacion.getPublicacionByTitulo(req.body.titulo)
+    let nombres = [];
+    let apellidos = [];
+    let fotos = [];
+    let carrera = req.query.id;
+    for(let i = 0;i<publicaciones.length;i++){
+       let persona = await Persona.getUser(publicaciones[i].ID_PERSONA);
+       fotos.push(persona[0].FOTO)
+       nombres.push(persona[0].NOMBRE)
+       apellidos.push(persona[0].APELLIDO)
+    }
+    res.render('search',{publicaciones,fotos,nombres,apellidos,carrera});
 }
 
 module.exports.getFormulario = async(req,res)=>{
