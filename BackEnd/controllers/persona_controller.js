@@ -1,5 +1,6 @@
 const Persona = require('../models//persona');
 const Estudio = require('../models/estudios');
+const Publicacion = require('../models/publicacion');
 const bcryptjs = require('bcryptjs');
 
 module.exports.savePersona = async (req,res)=>{
@@ -38,6 +39,24 @@ module.exports.savePersona = async (req,res)=>{
     }
 }
     
+}
+
+module.exports.misPublicaciones =  async (req,res)=>{
+    let publicaciones = await Publicacion.getMisPublicaciones(res.locals.userLogged[0].ID_PERSONA);
+    let publicadas = [];
+    let borradores = [];
+    for(let i = 0;i<publicaciones.length;i++){
+        if(publicaciones[i].ESTADO=='publicada'){
+            publicadas.push(publicaciones[i]);
+        }
+        if(publicaciones[i].ESTADO=='borrador'){
+            borradores.push(publicaciones[i])
+        }
+    }
+    let nombre = res.locals.userLogged[0].NOMBRE;
+    let apellido = res.locals.userLogged[0].APELLIDO;
+    let foto = res.locals.userLogged[0].FOTO;
+    res.render('misPublicaciones',{publicadas,borradores,nombre,apellido,foto});
 }
 
 module.exports.getUser = async (req,res)=>{

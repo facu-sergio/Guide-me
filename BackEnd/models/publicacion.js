@@ -56,5 +56,12 @@ class publicacion {
     return rows;
   }
 
+  static async getMisPublicaciones(idpersona){
+    let queryStr = "SELECT * FROM `publicaciones` WHERE `ID_persona` = ?";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr,[idpersona]);
+    return rows;
+  }
+
 }
 module.exports = publicacion;

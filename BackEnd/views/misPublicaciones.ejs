@@ -9,47 +9,52 @@
                 <h1>Mis publicaciones</h1>
             </div>
         </div>
-        <div class="row mt-4">
+        <div class="row">
+            <h2>Publicadas</h2>
+            <% for(let i=0;i<publicadas.length;i++){%>
             <!--comienza tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-4 offset-md-1 col-lg-4 ">
-                <h2>Publicadas</h2>
-                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 24rem;">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/ruth.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Ruth iascas</p>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3">
+                        <div class="card border border-3 border-dark  tarjetas card<%=publicadas[i].ID_CAR_UPE%>" style="max-width: 18rem;">
+                            <div class="card-header text-center">
+                                <img src="uploads/<%=foto%>" width="60" height="60" height="80" alt="">
+                                <p class="h4 text-light"><%= nombre%> <%= apellido%> </p>
+                            </div>
+                            <div class="card-body text-primary">
+                                <p class="h3 text-light"><%= publicadas[i].TITULO %></p>
+                                <div class="text-light " id="cuerpo" ><%= publicadas[i].CUERPO %>
+                                </div>
+                                <a href="/publicacion?id=<%= publicadas[i].ID_PUBLICACION %>" class="text-light">Ver publicación Completa</a>
+                            </div>
+                        </div>
+                        <a class="btn btn-success mt-2" href="/editarpublicacion">Editar</a>
+                        <button class="btn btn-danger mt-2">Borrar</button>
                     </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Supervisor de Logistica</p>
-                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
-                            años...
-                        </p>
-                        <a class="btn btn-warning" href="/editarpublicacion" >Editar</a>
-                        <button class="btn btn-danger">Borrar</button>
-                        <a href="/publicacion" class="btn btn-info">Ver publicación</a>
-                    </div>
-                </div>
-            </div>
-            <!--fin de tarjeta-->
-            <div class="col-xs-12 col-sm-6 col-md-4 offset-md-2  col-lg-4 ">
-                <h2>Borradores</h2>
-                <div class="card border border-3 border-dark mb-3 tarjetas cardLogistica" style="max-width: 24rem;">
-                    <div class="card-header text-center">
-                        <img class="rounded" src="img/ruth.jpg" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light">Ruth iascas</p>
-                    </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light">Supervisor de Logistica</p>
-                        <p class="text-light ">Hola soy Ruth Iascas trabajo como supervisor de logistica hace varios
-                            años...
-                        </p>
-                        <a class="btn btn-warning" href="/editarpublicacion">Editar</a>
-                        <button class="btn btn-danger">Borrar</button>
-                        <a href="/borradorpublicacion" class="btn btn-info">Previsualizar</a>
-                        <button class="btn btn-success">Publicar</button>
-                    </div>
-                </div>
-            </div>
+                    
+            <%}%>
         </div>
+            <div class="row mt-2">
+                <h2>Borradores</h2>
+                <% for(let i=0;i<borradores.length;i++){%>
+                <!--comienza tarjeta-->
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 ">
+                            <div class="card border border-3 border-dark mb-3 tarjetas card<%=borradores[i].ID_CAR_UPE%>" style="max-width: 18rem;">
+                                <div class="card-header text-center">
+                                    <img src="uploads/<%=foto%>" width="60" height="60" height="80" alt="">
+                                    <p class="h4 text-light"><%= nombre%> <%= apellido%> </p>
+                                </div>
+                                <div class="card-body text-primary">
+                                    <p class="h3 text-light"><%= borradores[i].TITULO %></p>
+                                    <div class="text-light " id="cuerpo" ><%= borradores[i].CUERPO %>
+                                    </div>
+                                    <a href="/publicacion?id=<%= borradores[i].ID_PUBLICACION %>" class="text-light">Ver publicación Completa</a>
+                                </div>
+                            </div>
+                            <a class="btn btn-success" href="/editarpublicacion">Editar</a>
+                            <button class="btn btn-danger">Borrar</button>
+                        </div>
+                <%}%>
+            </div>
     </div><!--fin Container-->
+    <script src="js/index.js"></script>
 </body>
 </html>

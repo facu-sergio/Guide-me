@@ -15,8 +15,6 @@ router.get("/editarperfil",(req,res)=>{
   res.render("editar_perfil");
 })
 
-router.get("/mispublicaciones",(req,res)=>{
-  res.render("misPublicaciones");
-})
+router.get("/mispublicaciones",authMiddleware, persona_controller.misPublicaciones);
 
 module.exports = router;
