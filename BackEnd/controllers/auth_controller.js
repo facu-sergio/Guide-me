@@ -26,8 +26,10 @@ module.exports.login = async (req,res)=>{
         })
         return
     };
+    
     req.session.user = query.email;
     req.session.rol =  query.rol;
+    
     res.render("login",{
         alert: true,
             alertTitle: "Login",

@@ -22,14 +22,14 @@ class publicacion {
   
   }
   static async getPublicadas() {
-    let queryStr = "SELECT * FROM `publicaciones` WHERE `ESTADO`= ?  ORDER BY `ID_PUBLICACION` DESC";
+    let queryStr = "SELECT * FROM `publicaciones` WHERE `ESTADO`= ? AND `BORRADO_L` = 0 ORDER BY `ID_PUBLICACION` DESC ";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr, ["publicada"]);
     return rows;
   }
 
   static async getPublicacion(id){
-    let queryStr = "SELECT * FROM `publicaciones` WHERE`ID_PUBLICACION`= ?";
+    let queryStr = "SELECT * FROM `publicaciones` WHERE`ID_PUBLICACION`= ? AND `BORRADO_L` = 0";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr, [id]);
     return rows;
@@ -43,23 +43,30 @@ class publicacion {
   }
 
   static async getPublicacionByCarrera(idCarrera){
-    let queryStr = "SELECT * FROM `publicaciones` where `ID_CAR_UPE`= ?";
+    let queryStr = "SELECT * FROM `publicaciones` where `ID_CAR_UPE`= ? AND `BORRADO_L` = 0";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr, [idCarrera]);
     return rows;
   }
 
   static async getPublicacionByTitulo(titulo){
-    let queryStr = "SELECT * FROM `publicaciones`WHERE `TITULO` LIKE ?";
+    let queryStr = "SELECT * FROM `publicaciones`WHERE `TITULO` LIKE ? AND `BORRADO_L` = 0";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr,['%'+titulo+'%']);
     return rows;
   }
 
   static async getMisPublicaciones(idpersona){
-    let queryStr = "SELECT * FROM `publicaciones` WHERE `ID_persona` = ?";
+    let queryStr = "SELECT * FROM `publicaciones` WHERE `ID_persona` = ? AND `BORRADO_L` = 0";
     let rows, fields;
     [rows, fields] = await connection.query(queryStr,[idpersona]);
+    return rows;
+  }
+
+  static async deletePublicacion(idpublicacion){
+    let queryStr = "UPDATE `publicaciones`  SET  `BORRADO_L` = 1 WHERE `ID_PUBLICACION` = ?";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr,[idpublicacion]);
     return rows;
   }
 

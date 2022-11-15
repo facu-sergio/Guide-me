@@ -23,11 +23,11 @@
                                 <p class="h3 text-light"><%= publicadas[i].TITULO %></p>
                                 <div class="text-light " id="cuerpo" ><%= publicadas[i].CUERPO %>
                                 </div>
-                                <a href="/publicacion?id=<%= publicadas[i].ID_PUBLICACION %>" class="text-light">Ver publicación Completa</a>
+                                <a href="/publicacion?id=<%= publicadas[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1">Ver publicación Completa</a>
                             </div>
                         </div>
                         <a class="btn btn-success mt-2" href="/editarpublicacion">Editar</a>
-                        <button class="btn btn-danger mt-2">Borrar</button>
+                        <a class="btn btn-danger mt-2" href="/borrarpublicacion?id=<%=publicadas[i].ID_PUBLICACION%>">Borrar</a>
                     </div>
                     
             <%}%>
@@ -46,11 +46,11 @@
                                     <p class="h3 text-light"><%= borradores[i].TITULO %></p>
                                     <div class="text-light " id="cuerpo" ><%= borradores[i].CUERPO %>
                                     </div>
-                                    <a href="/publicacion?id=<%= borradores[i].ID_PUBLICACION %>" class="text-light">Ver publicación Completa</a>
+                                    <a href="/publicacion?id=<%= borradores[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1 ">Ver publicación Completa</a>
                                 </div>
                             </div>
                             <a class="btn btn-success" href="/editarpublicacion">Editar</a>
-                            <button class="btn btn-danger">Borrar</button>
+                            <a class="btn btn-danger mt-2" href="/borrarpublicacion?id=<%=borradores[i].ID_PUBLICACION%>">Borrar</a>
                         </div>
                 <%}%>
             </div>

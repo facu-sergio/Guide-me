@@ -17,9 +17,14 @@ function getFechaHora(){
 module.exports.savePublicacion = async(req,res)=>{
     let idUsuario = res.locals.userLogged[0].ID_PERSONA
     let fecha_hora = getFechaHora();
-    let nuevaPubli =  new Publicacion(idUsuario,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado,null,fecha_hora,null);
+    let nuevaPubli =  new Publicacion(idUsuario,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado,0,fecha_hora,null);
     nuevaPubli.savePublicacion();
     res.redirect('/');
+}
+
+module.exports.deletePublicacion = async(req,res)=>{
+    let row =  Publicacion.deletePublicacion(req.query.id);
+    res.redirect('/mispublicaciones');
 }
 
 module.exports.getPublicacion = async(req,res)=>{

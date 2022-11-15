@@ -3,7 +3,8 @@ const bcryptjs = require("bcryptjs");
 const Publicacion = require('../models/publicacion')
 let idPersona;
 class User {
-  constructor(rol, nombre, apellido, foto, email, password, fecha_nac, oficio) {
+  constructor(id,rol, nombre, apellido, foto, email, password, fecha_nac, oficio) {
+    this.id = id;
     this.rol = rol;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -51,6 +52,7 @@ class User {
         if (await bcryptjs.compare(password, rows[0].PASSWORD)) {
           //return new User(rows[0]);
           return new User(
+            rows[0].ID_PERSONA,
             rows[0].ID_ROL,
             rows[0].NOMBRE,
             rows[0].APELLIDO,
