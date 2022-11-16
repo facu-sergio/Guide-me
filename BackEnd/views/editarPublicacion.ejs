@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('partials/head')%>
+<body>
+  <div class="container mt-5">
+    <%-include('partials/navbar')%>
+    <div class="card  mb-5 bg-body rounded mt-2">
+      <div class="card-header">
+        Editar Publicacion
+      </div>
+      <div class="card-body">
+        <form method="post" action="/editarpublicacion?id=<%=publicacion[0].ID_PUBLICACION%>">
+          <input type="numer" name="id" id="id" value="<%=publicacion[0].ID_PUBLICACION%>" hidden>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Titulo (profesion)</label>
+              <input type="text" class="form-control" id="titulo"   name="titulo" placeholder="Ej: programador web" value="<%=publicacion[0].TITULO%>">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Empresa</label>
+              <input type="text" class="form-control"  id="empresa" name="empresa" value="<%=publicacion[0].EMPRESA%>">
+            </div>
+          </div><!--fin row titulo y empresa-->
+          <div class="row mt-2">
+            <!--<div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Nombre de la carrera que estudiaste</label>
+              <input type="text" class="form-control" id="inputEmpresa">
+            </div>-->
+            <div class="col-md-6">
+              <label for="grado_carreras" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
+              <select class="form-select" aria-label="Default select example" name="carrera"  id="carrera">
+                <% for(let i=0;i<carreras.length;i++) { %>
+                <option value="<%=carreras[i].ID_CAR_UPE%>" 
+                  <% if(publicacion[0].ID_CAR_UPE==carreras[i].ID_CAR_UPE){%>
+                    selected
+                  <%} %>>
+                  <%=carreras[i].NOMBRE%></option>
+                <% } %>
+              </select>
+            </div>
+          </div><!--fin row nombre carrera etc-->
+          <div class="row mt-2">
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label">Cuerpo de la publicacion</label>
+              <textarea type="text" class="form-control"  id="cuerpo" name="cuerpo"><%=publicacion[0].CUERPO%></textarea>
+            </div>
+          </div><!--fin text area-->
+          
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label for="estado" class="form-label">Desea publicar o guardar en borrador?</label>
+              <select name="estado" id="estado" class="form-select">
+                <option value="publicada" <%= publicacion[0].ESTADO== 'publicada' ? "selected" : "" %> >Publicar</option>
+                <option value="borrador" <%= publicacion[0].ESTADO== 'borrador' ? "selected"  : "" %>  >Guardar en borrador</option>
+              </select>
+            </div>
+          </div>
+      </div><!--fin card-body-->
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+          </div>
+        </div>
+      </div>
+    </div><!--fin card general-->
+  </form>
+  </div><!--fin container-->
+
+</body>
+
+</html>

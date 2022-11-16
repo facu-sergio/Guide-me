@@ -67,3 +67,14 @@ module.exports.getFormulario = async(req,res)=>{
     let carreras = await Publicacion.getCarreras();
     res.render('form-Publicacion',{carreras});
 }
+
+module.exports.getFormularioEditar = async(req,res)=>{
+    let carreras = await Publicacion.getCarreras();
+    let publicacion = await Publicacion.getPublicacion(req.query.id);
+    res.render('editarPublicacion',{carreras,publicacion});
+}
+
+module.exports.editarPublicacion = async(req,res)=>{
+    let publicacion = await  Publicacion.updatePublicacion(req.body.id,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado);
+    res.redirect('/mispublicaciones');
+}

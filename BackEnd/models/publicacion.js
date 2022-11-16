@@ -19,8 +19,17 @@ class publicacion {
       queryStr,
       [this.idPersona, this.carrera, this.titulo, this.empresa, this.cuerpo,this.estado, this.borradol, this.fechaHora, this.moderacion ],
   );
-  
   }
+
+  static async updatePublicacion(idpublicacion,carrera,titulo,empresa,cuerpo,estado){
+    let queryStr = 'UPDATE `publicaciones`  SET  `ID_CAR_UPE`= ?, `TITULO`= ?,`EMPRESA`= ? , `CUERPO`= ? , `ESTADO` = ? WHERE `ID_PUBLICACION` = ?';
+    let result, fields;
+    [ result, fields ] = await connection.query(
+      queryStr,
+      [carrera, titulo, empresa, cuerpo,estado,idpublicacion],
+  );
+  }
+
   static async getPublicadas() {
     let queryStr = "SELECT * FROM `publicaciones` WHERE `ESTADO`= ? AND `BORRADO_L` = 0 ORDER BY `ID_PUBLICACION` DESC ";
     let rows, fields;

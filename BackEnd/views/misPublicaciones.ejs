@@ -26,7 +26,7 @@
                                 <a href="/publicacion?id=<%= publicadas[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1">Ver publicación Completa</a>
                             </div>
                         </div>
-                        <a class="btn btn-success mt-2" href="/editarpublicacion">Editar</a>
+                        <a class="btn btn-success mt-2" href="/editarpublicacion?id=<%=publicadas[i].ID_PUBLICACION%>">Editar</a>
                         <a class="btn btn-danger mt-2" href="/borrarpublicacion?id=<%=publicadas[i].ID_PUBLICACION%>">Borrar</a>
                     </div>
                     
@@ -49,7 +49,7 @@
                                     <a href="/publicacion?id=<%= borradores[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1 ">Ver publicación Completa</a>
                                 </div>
                             </div>
-                            <a class="btn btn-success" href="/editarpublicacion">Editar</a>
+                            <a class="btn btn-success" href="/editarpublicacion?id=<%=borradores[i].ID_PUBLICACION%>">Editar</a>
                             <a class="btn btn-danger mt-2" href="/borrarpublicacion?id=<%=borradores[i].ID_PUBLICACION%>">Borrar</a>
                         </div>
                 <%}%>
