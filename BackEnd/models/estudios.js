@@ -24,7 +24,6 @@ class Estudio {
     );
     return this;
   }
-
   static async getEstudiosByEmail(email) {
     let queryStr =
       "SELECT estudios.* FROM estudios INNER JOIN persona_estudios ON estudios.ID_ESTUDIO = persona_estudios.ID_ESTUDIO INNER JOIN personas ON persona_estudios.ID_PERSONA = personas.ID_PERSONA WHERE (personas.EMAIL = ?);";
@@ -32,6 +31,16 @@ class Estudio {
     [rows, fields] = await connection.query(queryStr, [email]);
     return rows;
   }
+
+ /* static async getEstudiosById(id) {
+    let queryStr = "SELECT estudios.* FROM estudios INNER JOIN persona_estudios ON estudios.ID_ESTUDIO = persona_estudios.ID_ESTUDIO INNER JOIN personas ON persona_estudios.ID_PERSONA = personas.ID_PERSONA WHERE (personas.ID_PERSONA = ?);";
+    let rows, fields;
+    [rows, fields] = await connection.query(queryStr, [id]);
+    return rows;
+}*/
+
 }
+
+
 
 module.exports = Estudio;

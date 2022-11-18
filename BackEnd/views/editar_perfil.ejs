@@ -9,7 +9,7 @@
             <h2>Editar Perfil</h2>
         </div>
         <!--Fin card-header-->
-        <form id="mi_formulario">
+        <form id="mi_formulario" method="post" action="/editarperfil" enctype="multipart/form-data">
             <div class="card-body">
                 <div class="row mt-3">
                     <p class="h3">Datos personales</p>
@@ -18,65 +18,72 @@
                 <div class="row mt-3">
                     <div class="col-md-4 col-xs-12">
                         <label class="form-label" for="nombre_us">Ingrese nombre</label>
-                        <input type="text" class="form-control" id="nombre_us" placeholder="Ej: Cristian">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Cristian" value="<%=persona[0].NOMBRE%>">
                     </div>
 
                     <div class="col-md-4 col-xs-12">
                         <label class="form-label" for="apellido_us">Ingrese apellido</label>
-                        <input type="text" class="form-control" id="apellido_us" placeholder="Ej: Gonzales">
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ej: Gonzales" value="<%=persona[0].APELLIDO%>">
                     </div>
 
                     <div class="col-md-4 col-xs-12">
                         <label class="form-label" for="fecha_nac">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_nac">
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" value="<%=fecha%>" >
                     </div>
                 </div><!--Fin row nombre, apellido, nac-->
-
-                
                 <div class="row mt-3">
                   <div class="col-md-4 col-xs-12">
                       <label class="form-label" for="imagen">Foto para tu perfil</label>
-                      <input type="file" class="form-control" id="imagen">
-                  
+                      <input type="file" class="form-control" id="imagen" name="image">
                   </div>
               </div><!--Fin de row imagen-->
            
                 <div class="row mt-3">
                     <h4>Datos académicos</h4>
                 </div>
-                <!--Fin tercer separador-->
+                <!--Fin tercer separador
+                <% for(let i=0;i<estudios.length;i++){%>
+                    <div class="row mt-3" >
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="carrera[]">Nombre de carrera:</label>
+                            <input type="text" class="form-control" id="carrera" name="carrera[]" 
+                            placeholder="Ejemplo:Tecnicatura en sistemas" value="<%= estudios[i].NOMBRE_CARRERA %>">
+                            <div class="invalid-feedback text-warning">Ingrese una carrera</div>
+                        </div>
+                      
+                        <div class="col-md-4 col-xs-12">
+                            <label class="form-label" for="universidad[]">Universidad</label>
+                            <input  class="form-control" type="text" id="universidad" name="universidad[]" value="<%= estudios[i].UNIVERSIDAD %>" >
+                            <div class="invalid-feedback text-warning">Ingrese una universidad</div>
+                        </div>
+                    </div>
+                <%} %>  -->
+                
+                <div class="row" id="rowCarreras">
+                    <div class="col-md-4 col-xs-12" id="divCarrera">
 
+                    </div>
+                    <div class="col-md-4 col-xs-12" id="divUniversidad">
+
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-4 col-xs-12">
+                        <button type="button" class="btn btn-labeled btn-dark" id="addCarrera">
+                        <span class="btn-label"><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Agregar</button>
+                    </div>
+                </div>
+                 <!--Fin de universidad-->
+                <!--row general-->  
+                <div class="row mt-3">
+                    <h4>Datos Laborales</h4>
+                </div>
                 <div class="row mt-3">
                     <div class="col-md-4 col-xs-12">
-                        <label class="form-label" for="usr">Nombre de carrera:</label>
-                        <input type="text" class="form-control" id="usr"
-                            placeholder="Ejemplo:Tecnicatura en sistemas">
+                        <label for="oficio" class="form-label">Si trabajas o trabajaste en un puesto relacionado a tu formación academica ingresalo (campo opcional) </label>
+                        <input type="text" class="form-control" placeholder="Ej: programador web"  name="oficio" id="oficio" value="<%=persona[0].OFICIO%>" >
                     </div>
-                    <!--Fin campo nombre carrera-->
-                    <div class="col-md-4 col-xs-12">
-                        <label class="form-label" for="grado_carreras">Seleccione grado de carrera</label>
-                        <select class="form-select" aria-label="Default select example" name="grado" id="">
-                            <option selected value="" disabled hidden>Seleccione</option>
-                            <option value="de_grado">De grado</option>
-                            <option value="posgrado">Posgrado</option>
-                            <option value="maestria">Maestria</option>
-                        </select>
-                    </div>
-                    <!--Fin select grado carrera-->
-                    <div class="col-md-4 col-xs-12">
-                        <label class="form-label" for="carreras">Seleccione estado de carrera</label>
-                        <select class="form-select" aria-label="Default select example" name="cars" id="cars">
-                            <option selected value="" disabled hidden>Seleccione</option>
-                            <option value="en_curso">En curso</option>
-                            <option value="finalizado">Finalizado</option>
-                            <option value="abandonado">Abandonado</option>
-                        </select>
-                    </div>
-                    <!--Fin select estado carrera-->
                 </div>
-                <!--row general-->
-               
-               
             </div>
             <!--Fin card-body-->
             <div class="card-footer">
@@ -93,8 +100,7 @@
 
 </div>
 <!--Supuesto fin container-->
-<menu-footer></menu-footer>
- 
+<script src="js/form_editperfil.js"></script>
 </body>
 
 </html>

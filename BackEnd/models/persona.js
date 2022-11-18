@@ -24,7 +24,15 @@ class User {
         );
         return idPersona = result.insertId;
     }
-  
+
+  static async updateDatosPersonales(id,rol,nombre,apellido,fecha_nac,foto,oficio){
+    let queryStr = 'UPDATE `personas`  SET  `ID_ROL`= ?, `NOMBRE`= ?, `APELLIDO`= ?,`FOTO`= ? ,  `FECHA_NAC`= ?,`OFICIO`= ? WHERE `ID_PERSONA` = ?';
+    let result, fields;
+    [ result, fields ] = await connection.query(
+      queryStr,
+      [rol,nombre, apellido,foto,fecha_nac,oficio,id],
+  );
+  } 
   
   static async getUserByEmail(email) {
     let queryStr = "SELECT  `ID_PERSONA`,`ID_ROL`, `NOMBRE`, `APELLIDO`, `FOTO`, `EMAIL`, `PASSWORD`, `FECHA_NAC`, `OFICIO` FROM `personas` WHERE EMAIL = ?";
@@ -40,7 +48,6 @@ class User {
     return;
   }
   
-
   static async checkLogin(dataForm) {
     let email = dataForm.email;
     let password = dataForm.password;
@@ -72,14 +79,8 @@ class User {
   }
 
 
-/* static async getEstudios(id) {
-        let queryStr = "SELECT estudios.* FROM estudios INNER JOIN persona_estudios ON estudios.ID_ESTUDIOS = persona_estudios.ID_ESTUDIOS INNER JOIN personas ON persona_estudios.ID_PERSONA = personas.ID_PERSONA WHERE (personas.ID_PERSONA = ?);";
-        let rows, fields;
-        [rows, fields] = await connection.query(queryStr, [id]);
-        return rows;
-      }*/
 
-  static async getUser(id) {
+  static async getUserById(id) {
         let queryStr = "SELECT * FROM `personas` WHERE ID_PERSONA = ?";
         let rows, fields;
         [rows, fields] = await connection.query(queryStr, [id]);

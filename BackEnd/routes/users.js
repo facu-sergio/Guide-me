@@ -11,9 +11,9 @@ router.post("/registrarse", persona_controller.savePersona);
 
 router.get("/miperfil",authMiddleware, persona_controller.getUser)
 
-router.get("/editarperfil",(req,res)=>{
-  res.render("editar_perfil");
-})
+router.get("/editarperfil",authMiddleware,persona_controller.getPerfil);
+
+router.post("/editarperfil",authMiddleware,persona_controller.editPerfil);
 
 router.get("/mispublicaciones",authMiddleware, persona_controller.misPublicaciones);
 
