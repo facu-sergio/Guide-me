@@ -15,11 +15,19 @@ function getFechaHora(){
 }
 
 module.exports.savePublicacion = async(req,res)=>{
-    let idUsuario = res.locals.userLogged[0].ID_PERSONA
-    let fecha_hora = getFechaHora();
-    let nuevaPubli =  new Publicacion(idUsuario,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado,0,fecha_hora,null);
-    nuevaPubli.savePublicacion();
-    res.redirect('/');
+    let errors = validarDatos(req.body);
+    console.log("--errors--")
+    console.log(errors)
+    if(Object.keys(errors).length>0){
+        let carreras = await Publicacion.getCarreras();
+        res.render('form-publicacion',{errors,oldData:req.body,carreras});
+    }else{
+        let idUsuario = res.locals.userLogged[0].ID_PERSONA
+        let fecha_hora = getFechaHora();
+        let nuevaPubli =  new Publicacion(idUsuario,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado,0,fecha_hora,null);
+        nuevaPubli.savePublicacion();
+        res.redirect('/');
+    }
 }
 
 module.exports.deletePublicacion = async(req,res)=>{
@@ -65,7 +73,7 @@ module.exports.search = async(req,res)=>{
 
 module.exports.getFormulario = async(req,res)=>{
     let carreras = await Publicacion.getCarreras();
-    res.render('form-Publicacion',{carreras});
+    res.render('form-Publicacion',{carreras,errors:'',oldData:''});
 }
 
 module.exports.getFormularioEditar = async(req,res)=>{
@@ -79,4 +87,40 @@ module.exports.editarPublicacion = async(req,res)=>{
     res.redirect('/mispublicaciones');
 }
 
+let validarDatos= (data)=>{
+    let errors = {
+        titulo : [],
+        empresa : [],
+        carrera: [],
+        cuerpo: [],
+        estado: []
+    }
+
+    if(!data.titulo){
+        errors.titulo.push('El campo titulo es obligatorio');
+    }
+
+    if(!data.empresa){
+        errors.empresa.push('el campo empresa es obligatorio');
+    }
+
+    if(!data.carrera){
+        errors.carrera.push('el campo carrera es obligatorio');
+    }
+
+    if(!data.cuerpo){
+        errors.cuerpo.push('el campo cuerpo es obligatorio');
+    }
+    
+    if(!data.estado){
+        errors.estado.push('el campo estado es obligatorio');
+    }
+    for(let key of Object.keys(errors)){
+        if(errors[key].length==0){
+            delete errors[key];
+        }
+    }
+
+    return errors;
+}
 
