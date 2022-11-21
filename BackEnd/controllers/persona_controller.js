@@ -71,7 +71,6 @@ module.exports.getUser = async (req,res)=>{
 
 module.exports.getPerfil= async(req,res)=>{
     persona = await Persona.getUserByEmail(req.session.user);
-    console.log(persona)
     let fecha = persona[0].FECHA_NAC.toISOString().slice(0, 10);
     estudios = await Estudio.getEstudiosByEmail(req.session.user);
     foto = res.locals.userLogged[0].FOTO;

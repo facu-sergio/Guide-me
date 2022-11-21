@@ -8,18 +8,22 @@
     min-height: 23rem;
     max-height: 23rem;
 }
-.card3{
-    background-color: #89388c ;
-}
-
-.card5{
-    background-color: #e8b84d;
-}
 .card1{
     background-color: #5b9fd6;
 }
+.card2{
+    background-color: #005ba4 ;
+}
+.card3{
+    background-color: #89388c ;
 
+}
+.card4{
+    background-color: #ff7aaa;
+}
+.card5{
+    background-color: #e8b84d;
+}
 .card6{
     background-color: #0aa49c;
 }
-

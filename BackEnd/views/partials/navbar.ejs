@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light mt-2">
+<nav class="navbar navbar-expand-md navbar-light bg-light mt-2">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="img/chatting.png" alt="" height="75">
                 Guide-me
             </a>
@@ -15,17 +15,17 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Carreras
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Comercio internacional</a></li>
-                            <li><a class="dropdown-item" href="#">Gestión areoportuaria</a></li>
-                            <li><a class="dropdown-item" href="#">Logistica</a></li>
-                            <li><a class="dropdown-item" href="#">Turismo</a></li>
-                            <li><a class="dropdown-item" href="#">Desarrollo de software</a></li>
-                            <li><a class="dropdown-item" href="#">Higiene y Seguridad</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=1">Comercio internacional</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=2">Gestión areoportuaria</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=3">Logistica</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=4">Turismo</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=5">Desarrollo de software</a></li>
+                            <li><a class="dropdown-item" href="/publicaciones?id=6">Higiene y Seguridad</a></li>
                         </ul>
                     </li>
                     
@@ -36,14 +36,16 @@
                             </li>
                         <% } %>
                     <% } %>
-                    
                 </ul>
                 <% if(!locals.userLogged){%>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <a class="nav-link active btn btn-primary btn-lg text-white" aria-current="page" href="/login">Iniciar sesión</a>
-                </ul>
-                <ul class="navbar-nav ms-3 mb-2 mb-lg-0">
-                    <a class="nav-link active ms-auto btn btn-primary btn-lg text-white" aria-current="page" href="/registrarse">Registrarse</a>
+                <ul class="navbar-nav me-auto mb-2 offset-md-0    offset-lg-4 offset-xl-6">
+                    <li class="navbar-nav mb-2 mb-lg-0 me-md-2 ">
+                        <a class="nav-link active btn btn-primary btn-lg text-white" aria-current="page" href="/login"><i class="fa fb fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a>
+                    </li>
+                        
+                    <li class="navbar-nav mb-2 mb-lg-0">
+                        <a class="nav-link active   btn btn-success btn-lg text-white" aria-current="page" href="/registrarse"><i class="fa fb fa-user-plus" aria-hidden="true"></i> Registrarse</a>
+                    </li>
                 </ul>
                 <%}%>
                 <!--Notificaciones-->
@@ -54,7 +56,7 @@
                         <i class="fas fa-bell"></i>
                         <span class="badge badge-notification bg-danger">1</span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <li>
                             <a class="dropdown-item" href="#">A sebastian Lopez le gusta tu comentario</a>
                         </li>
@@ -62,24 +64,16 @@
                             <a class="dropdown-item" href="#">Cristian Lopez subio una nueva publicación</a>
                         </li>
                     </ul>
-                </div>
-                <%}%>
-                <!--Perfil-->
-                <% if(locals.userLogged){%>
-                    <div class="dropdown">
-                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                    <a class="dropdown-toggle  align-items-center hidden-arrow" href="#"
                             id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <img src="uploads/<%= locals.userLogged[0].FOTO%>" class="rounded-circle"
-                                height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                            height="25" alt="Black and White Portrait of a Man" loading="lazy" />
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
                                 <a class="dropdown-item" href="/miperfil">Mi Perfil</a>
                             </li>
-                            <li>
-                            <a class="dropdown-item" href="/editarperfil">Editar Perfil</a>
-                        </li>
                         <%if(locals.userLogged[0].ID_ROL==2){%>
                             <li>
                                 <a class="dropdown-item" href="/mispublicaciones">Mis publicaciones</a>
@@ -89,7 +83,7 @@
                                 <a class="dropdown-item" href="/logout">Cerrar sesión</a>
                             </li>
                         </ul>
-                    </div>
+                </div>
                 <%}%>
             </div>
         </div>

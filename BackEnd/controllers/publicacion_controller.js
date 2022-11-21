@@ -16,8 +16,6 @@ function getFechaHora(){
 
 module.exports.savePublicacion = async(req,res)=>{
     let errors = validarDatos(req.body);
-    console.log("--errors--")
-    console.log(errors)
     if(Object.keys(errors).length>0){
         let carreras = await Publicacion.getCarreras();
         res.render('form-publicacion',{errors,oldData:req.body,carreras});
@@ -37,7 +35,7 @@ module.exports.deletePublicacion = async(req,res)=>{
 
 module.exports.getPublicacion = async(req,res)=>{
     let publicacion = await  Publicacion.getPublicacion(req.query.id);
-    let persona = await Persona.getUser(publicacion[0].ID_PERSONA);
+    let persona = await Persona.getUserById(publicacion[0].ID_PERSONA);
     res.render('publicacion',{publicacion,persona});
 }
 
@@ -48,7 +46,7 @@ module.exports.getPublicacionByCarrera = async(req,res)=>{
     let fotos = [];
     let carrera = req.query.id;
     for(let i = 0;i<publicaciones.length;i++){
-       let persona = await Persona.getUser(publicaciones[i].ID_PERSONA);
+       let persona = await Persona.getUserById(publicaciones[i].ID_PERSONA);
        fotos.push(persona[0].FOTO)
        nombres.push(persona[0].NOMBRE)
        apellidos.push(persona[0].APELLIDO)
@@ -63,7 +61,7 @@ module.exports.search = async(req,res)=>{
     let fotos = [];
     let carrera = req.query.id;
     for(let i = 0;i<publicaciones.length;i++){
-       let persona = await Persona.getUser(publicaciones[i].ID_PERSONA);
+       let persona = await Persona.getUserById(publicaciones[i].ID_PERSONA);
        fotos.push(persona[0].FOTO)
        nombres.push(persona[0].NOMBRE)
        apellidos.push(persona[0].APELLIDO)
