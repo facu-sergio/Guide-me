@@ -59,22 +59,20 @@
                     </div>
                 <%} %>  -->
                 
-                <div class="row" id="rowCarreras">
-                    <div class="col-md-4 col-xs-12" id="divCarrera">
-
+                <div class="row mt-3" >
+                    <div class="col-md-4 col-xs-12" >
+                        <label class="form-label" for="carrera[]">Nombre de carrera:</label>
+                        <input type="text" class="form-control" id="carrera" name="carrera[]" value="<%=estudios[0].NOMBRE_CARRERA%>"
+                        placeholder="Ejemplo:Tecnicatura en sistemas">
+                        <div class="invalid-feedback text-warning">Ingrese una carrera</div>
                     </div>
-                    <div class="col-md-4 col-xs-12" id="divUniversidad">
-
-                    </div>
-                </div>
-                <div class="row mt-2">
+                    <!--Fin campo nombre carrera-->
                     <div class="col-md-4 col-xs-12">
-                        <button type="button" class="btn btn-labeled btn-dark" id="addCarrera">
-                        <span class="btn-label"><i class="fa fa-plus-circle" aria-hidden="true"></i></span> Agregar</button>
+                        <label class="form-label" for="universidad[]">Universidad</label>
+                        <input  class="form-control" type="text" id="universidad" name="universidad[]" value=" <%=estudios[0].UNIVERSIDAD%>">
+                        <div class="invalid-feedback text-warning">Ingrese una universidad</div>
                     </div>
-                </div>
-                 <!--Fin de universidad-->
-                <!--row general-->  
+                </div> 
                 <div class="row mt-3">
                     <h4>Datos Laborales</h4>
                 </div>

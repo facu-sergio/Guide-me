@@ -14,7 +14,7 @@
                                 <h4><%= persona[0].NOMBRE %> <%= persona[0].APELLIDO %></h4>
                                 <p class="text-secondary mb-1"></p>
                                 <%if(locals.userLogged[0].ID_ROL==2){%>
-                                    <p class="text-muted font-size-sm"><%= persona[0].OFICIO %></p>
+                                    <p class="text-muted font-size-sm"><%= persona[0].OFICIO %> </p>
                                 <%}%>
                                 <%if(locals.userLogged[0].ID_ROL==3){%>
                                     <p class="text-muted font-size-sm"> Alumno</p>
@@ -33,15 +33,6 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <%= persona[0].NOMBRE%> <%= persona[0].APELLIDO %> 
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <%= persona[0].EMAIL %>
                             </div>
                         </div>
                         <hr>

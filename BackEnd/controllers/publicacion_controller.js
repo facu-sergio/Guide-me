@@ -109,7 +109,7 @@ let validarDatos= (data)=>{
             errors.titulo.push('El campo titulo no puede tener mas de 35 caracteres');
         }
     }
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
     if(!data.empresa){
         errors.empresa.push('el campo empresa es obligatorio');
     }else{
