@@ -3,17 +3,20 @@ const Estudio = require('../models/estudios');
 const Publicacion = require('../models/publicacion');
 const bcryptjs = require('bcryptjs');
 
+module.exports.getFormRegistro = async (req,res)=>{
+    res.render("formulario_registro",{errors:'',oldData:''})
+}
 module.exports.savePersona = async (req,res)=>{
-    let existe = await Persona.getUserByEmail(req.body.email);
+   let existe = await Persona.getUserByEmail(req.body.email);
     if(existe){
         res.render("formulario_registro",{
             alert: true,
-				alertTitle: "Registro",
-				alertMessage: "¡Error el email esta en uso !",
-				alertIcon:'error',
-				showConfirmButton: false,
-				timer: 2000,
-				ruta: 'registrarse'
+			alertTitle: "Registro",
+			alertMessage: "¡Error el email esta en uso !",
+			alertIcon:'error',
+			showConfirmButton: false,
+			timer: 2000,
+            oldData:req.body,
         })
     }else{
         let rol;
@@ -24,7 +27,6 @@ module.exports.savePersona = async (req,res)=>{
             rol = 2;
         }
         let newPerson = new Persona(null,rol, req.body.nombre, req.body.apellido, req.file.filename, req.body.email, password, req.body.fecha_nac, req.body.oficio );
-        
         let idPersona  = await newPerson.save();
         for(let i=0;i<req.body.carrera.length;i++){
         Estudio.saveEstudios(req.body.carrera[i],req.body.universidad[i],idPersona);
@@ -35,11 +37,11 @@ module.exports.savePersona = async (req,res)=>{
 				alertIcon:'success',
 				showConfirmButton: false,
 				timer: 1500,
-				ruta: ''
+				ruta: '',
+                oldData:'',
         })
     }
 }
-    
 }
 
 module.exports.misPublicaciones =  async (req,res)=>{

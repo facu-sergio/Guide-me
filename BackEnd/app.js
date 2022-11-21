@@ -44,7 +44,7 @@ app.use(multer({
       if(mimetype && extname ){
         return cb(null,true)
       }
-      cb("Error: archivo debe ser una imagen valida")
+      cb("Error: seleccione una imagen .jpg, .jpeg o png")
     }
   }).single('image'));
 

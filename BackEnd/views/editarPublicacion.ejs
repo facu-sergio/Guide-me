@@ -10,25 +10,28 @@
       </div>
       <div class="card-body">
         <form method="post" action="/editarpublicacion?id=<%=publicacion[0].ID_PUBLICACION%>">
-          <input type="numer" name="id" id="id" value="<%=publicacion[0].ID_PUBLICACION%>" hidden>
+          <input type="numer" name="id" id="id" value="<%=publicacion[0].ID_PUBLICACION%>" hidden required>
           <div class="row">
             <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Titulo (profesion)</label>
-              <input type="text" class="form-control" id="titulo"   name="titulo" placeholder="Ej: programador web" value="<%=publicacion[0].TITULO%>">
+              <label for="titulo" class="form-label">Titulo (profesion)</label>
+              <input type="text" class="form-control <%- errors.titulo ? 'is-invalid' : '' %>" id="titulo"   name="titulo" placeholder="Ej: programador web" value="<%=publicacion[0].TITULO%>" required>
+              <div class="invalid-feedback">
+                <%- errors.titulo %>
+              </div>
             </div>
             <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Empresa</label>
-              <input type="text" class="form-control"  id="empresa" name="empresa" value="<%=publicacion[0].EMPRESA%>">
+              <label for="empresa" class="form-label">Empresa</label>
+              <input type="text" class="form-control <%- errors.empresa ? 'is-invalid' : '' %>"  id="empresa" name="empresa" value="<%=publicacion[0].EMPRESA%>" required>
+              <div class="invalid-feedback">
+                <%- errors.empresa %>
+              </div>
             </div>
           </div><!--fin row titulo y empresa-->
           <div class="row mt-2">
-            <!--<div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Nombre de la carrera que estudiaste</label>
-              <input type="text" class="form-control" id="inputEmpresa">
-            </div>-->
             <div class="col-md-6">
-              <label for="grado_carreras" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
-              <select class="form-select" aria-label="Default select example" name="carrera"  id="carrera">
+              <label for="carrera" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
+              <select class="form-select <%- errors.carrera ? 'is-invalid' : '' %>" aria-label="Default select example" name="carrera"  id="carrera" required>
+                <option value=""></option>
                 <% for(let i=0;i<carreras.length;i++) { %>
                 <option value="<%=carreras[i].ID_CAR_UPE%>" 
                   <% if(publicacion[0].ID_CAR_UPE==carreras[i].ID_CAR_UPE){%>
@@ -37,22 +40,32 @@
                   <%=carreras[i].NOMBRE%></option>
                 <% } %>
               </select>
+              <div class="invalid-feedback">
+                <%- errors.carrera %>
+              </div>
             </div>
           </div><!--fin row nombre carrera etc-->
           <div class="row mt-2">
             <div class="col-12">
               <label for="inputAddress2" class="form-label">Cuerpo de la publicacion</label>
-              <textarea type="text" class="form-control"  id="cuerpo" name="cuerpo"><%=publicacion[0].CUERPO%></textarea>
+              <textarea type="text" class="form-control <%- errors.cuerpo ? 'is-invalid' : '' %>"  id="cuerpo" name="cuerpo" required><%=publicacion[0].CUERPO%></textarea>
+              <div class="invalid-feedback">
+                <%- errors.cuerpo %>
+              </div>
             </div>
           </div><!--fin text area-->
           
           <div class="row mt-2">
             <div class="col-md-6">
               <label for="estado" class="form-label">Desea publicar o guardar en borrador?</label>
-              <select name="estado" id="estado" class="form-select">
+              <select name="estado" id="estado" class="form-select <%- errors.estado ? 'is-invalid' : '' %>" required>
+                <option value=""></option>
                 <option value="publicada" <%= publicacion[0].ESTADO== 'publicada' ? "selected" : "" %> >Publicar</option>
                 <option value="borrador" <%= publicacion[0].ESTADO== 'borrador' ? "selected"  : "" %>  >Guardar en borrador</option>
               </select>
+              <div class="invalid-feedback">
+                <%- errors.estado %>
+              </div>
             </div>
           </div>
       </div><!--fin card-body-->

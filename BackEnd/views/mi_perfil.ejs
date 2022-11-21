@@ -11,7 +11,7 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="uploads/<%= persona[0].FOTO%>" alt="" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h4><%= persona[0].NOMBRE %></h4>
+                                <h4><%= persona[0].NOMBRE %> <%= persona[0].APELLIDO %></h4>
                                 <p class="text-secondary mb-1"></p>
                                 <%if(locals.userLogged[0].ID_ROL==2){%>
                                     <p class="text-muted font-size-sm"><%= persona[0].OFICIO %></p>
@@ -32,7 +32,7 @@
                                 <h6 class="mb-0">Nombre completo</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= persona[0].NOMBRE%> <%=persona[0].APELLIDO %> 
+                                <%= persona[0].NOMBRE%> <%= persona[0].APELLIDO %> 
                             </div>
                         </div>
                         <hr>

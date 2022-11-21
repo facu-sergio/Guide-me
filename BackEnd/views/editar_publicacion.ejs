@@ -13,11 +13,17 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">Titulo (profesion)</label>
-                  <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ej: programador web">
+                  <input type="text" class="form-control <%- errors.titulo ? 'is-invalid' : '' %>" id="titulo" name="titulo" placeholder="Ej: programador web">
+                  <div class="invalid-feedback">
+                    <%- errors.titulo %>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="inputPassword4" class="form-label">Empresa</label>
-                  <input type="text" class="form-control" id="empresa" name="empresa">
+                  <label for="empresa" class="form-label">Empresa</label>
+                  <input type="text" class="form-control <%- errors.empresa ? 'is-invalid' : '' %>" id="empresa" name="empresa">
+                  <div class="invalid-feedback">
+                    <%- errors.empresa %>
+                  </div>
                 </div>
               </div><!--fin row titulo y empresa-->
               <div class="row mt-2">
@@ -25,17 +31,7 @@
                   <label for="inputPassword4" class="form-label">Nombre de la carrera que estudiaste</label>
                   <input type="text" class="form-control" id="inputEmpresa">
                 </div>-->
-                <div class="col-md-6">
-                  <label for="grado_carreras" class="form-label">A que carrera de la UPE va orientada la publicacion</label>
-                  <select class="form-select" aria-label="Default select example" name="carrera" id="carrera">
-                    <option value="comercio">Comercio internacional</option>
-                    <option value="comercio">Gestion Aeroportuaria</option>
-                    <option value="software">Desarrollo de software</option>
-                    <option value="logistica">Logistica</option>
-                    <option value="turismo">Turismo</option>
-                    <option value="Hys">Higiene y Seguridad</option>
-                  </select>
-                </div>
+                
               </div><!--fin row nombre carrera etc-->
               <div class="row mt-2">
                 <div class="col-12">

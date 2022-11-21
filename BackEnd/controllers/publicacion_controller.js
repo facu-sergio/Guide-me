@@ -77,12 +77,20 @@ module.exports.getFormulario = async(req,res)=>{
 module.exports.getFormularioEditar = async(req,res)=>{
     let carreras = await Publicacion.getCarreras();
     let publicacion = await Publicacion.getPublicacion(req.query.id);
-    res.render('editarPublicacion',{carreras,publicacion});
+    res.render('editarPublicacion',{carreras,publicacion,errors:''});
 }
 
 module.exports.editarPublicacion = async(req,res)=>{
-    let publicacion = await  Publicacion.updatePublicacion(req.body.id,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado);
-    res.redirect('/mispublicaciones');
+    let errors = validarDatos(req.body);
+    if(Object.keys(errors).length>0){
+        let publicacion = await Publicacion.getPublicacion(req.query.id);
+        let carreras = await Publicacion.getCarreras();
+        res.render('editarPublicacion',{errors,carreras,publicacion});
+    }else{
+        let publicacion = await  Publicacion.updatePublicacion(req.body.id,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado);
+        res.redirect('/mispublicaciones');
+    }
+    
 }
 
 let validarDatos= (data)=>{
@@ -96,10 +104,18 @@ let validarDatos= (data)=>{
 
     if(!data.titulo){
         errors.titulo.push('El campo titulo es obligatorio');
+    }else{
+        if(data.titulo.length>35){
+            errors.titulo.push('El campo titulo no puede tener mas de 35 caracteres');
+        }
     }
-
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     if(!data.empresa){
         errors.empresa.push('el campo empresa es obligatorio');
+    }else{
+        if(data.empresa.length>200){
+            errors.empresa.push('El campo empresa no puede tener mas de 200 caracteres');
+        }
     }
 
     if(!data.carrera){
