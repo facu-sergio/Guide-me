@@ -6,7 +6,9 @@
         <%- include('partials/navbar'); %>
         <%- include('partials/searcher'); %>
         <%- include('partials/tarjeta'); %>
-       
+        <% if(publicaciones.length<1){ %>
+            <p class="h4">No se encontraron resultados para su búsqueda</p>
+        <% } %>
         <script src="js/index.js"></script>
 
     </div>
