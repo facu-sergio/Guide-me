@@ -11,6 +11,9 @@
         </div>
         <div class="row">
             <h2>Publicadas</h2>
+            <% if(publicadas.length<1){%>
+                <p class="h5">No tienes Publicaciones publicadas</p>
+            <% }%>
             <% for(let i=0;i<publicadas.length;i++){%>
             <!--comienza tarjeta-->
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3">
@@ -34,6 +37,9 @@
         </div>
             <div class="row mt-2">
                 <h2>Borradores</h2>
+                <% if(borradores.length<1){%>
+                    <p class="h5">No tienes Borradores</p>
+                <% }%>
                 <% for(let i=0;i<borradores.length;i++){%>
                 <!--comienza tarjeta-->
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 ">
