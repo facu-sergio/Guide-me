@@ -9,7 +9,7 @@ const path = require('node:path');
 const aut_controller = require('../controllers/auth_controller')
 
 router.get('/login',authGuestMiddleware, (req,res)=>{
-    res.render('login');
+    res.render('login', {oldData:''});
 });
 
 router.post('/login', aut_controller.login);

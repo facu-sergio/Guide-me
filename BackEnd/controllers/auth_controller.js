@@ -10,7 +10,8 @@ module.exports.login = async (req,res)=>{
 				alertIcon:'error',
 				showConfirmButton: false,
 				timer: 2000,
-				ruta: 'login'
+				ruta: 'login',
+                oldData:req.body
         })
         return
     }
@@ -22,7 +23,8 @@ module.exports.login = async (req,res)=>{
 				alertIcon:'error',
 				showConfirmButton: false,
 				timer: 2000,
-				ruta: 'login'
+				ruta: 'login',
+                oldData:req.body
         })
         return
     };
@@ -37,7 +39,8 @@ module.exports.login = async (req,res)=>{
             alertIcon:'success',
             showConfirmButton: false,
             timer: 1500,
-            ruta: ''
+            ruta: '',
+            oldData:''
     });
 }
 
