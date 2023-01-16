@@ -15,5 +15,5 @@ const Persona = require('../models/persona')
        nombres.push(persona[0].NOMBRE)
        apellidos.push(persona[0].APELLIDO)
     }
-    res.render('index',{publicaciones,fotos,nombres,apellidos,totalPages});
+    res.render('Index',{publicaciones,fotos,nombres,apellidos,totalPages});
 }

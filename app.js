@@ -4,7 +4,7 @@ const path = require('path');
 const {uuid} = require('uuidv4')
 
 //routes
-const routes_index = require('./routes/index');
+const routes_ = require('./routes/index');
 const routes_users = require('./routes/users');
 const routes_publications = require('./routes/publications');
 const routes_auth = require('./routes/auth');
