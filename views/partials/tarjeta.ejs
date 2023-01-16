@@ -5,7 +5,7 @@
                 <div class="card border border-3 border-dark mb-3 tarjetas card<%=publicaciones[i].ID_CAR_UPE%>" style="max-width: 18rem;">
                     <div class="card-header text-center">
                         <img src="uploads/<%= fotos[i]%>" width="60" height="60" height="80" alt="">
-                        <p class="h4 text-light text-capitalize"><%= nombres[i]%> <%= apellidos[i]%> </p>
+                        <a class="h4  text-capitalize nametarjet" href="/perfil?id=<%=publicaciones[i].ID_PERSONA%>"><%= nombres[i]%> <%= apellidos[i]%> </a>
                     </div>
                     <div class="card-body text-primary">
                         <p class="h3 text-light"><%= publicaciones[i].TITULO %></p>

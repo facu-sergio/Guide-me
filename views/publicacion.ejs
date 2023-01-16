@@ -47,8 +47,8 @@
                 <div class="bg-white p-2 border border-2 border-secondary border-opacity-50 rounded mt-4"id="separador">
                     <div class="bg-white p-2 border border-1 border-primary  border-opacity-50 rounded mt-2" id="comment">
                       <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosComentarios[i]%>" width="40">
-                        <div class="d-flex flex-column justify-content-start ml-2"><a
-                            class="nav-link active" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresComentarios[i]%> <%= apellidosComentarios[i]%> </a></div>
+                        <div class="d-flex flex-column justify-content-start ms-2"><a
+                            class="" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>" ><%= nombresComentarios[i]%> <%= apellidosComentarios[i]%> </a></div>
                       </div>
                       <div class="mt-2 bg-white rounded">
                         <p class="comment-text "><%=comentarios[i].CUERPO%></p>
@@ -73,7 +73,7 @@
                         <div class="bg-white p-2  border border-1  border-primary border-opacity-50 rounded mt-2" id="comment">
                           <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosRespuestas[l]%>" width="40">
                             <div class="d-flex flex-column justify-content-start ml-2"><a
-                                class="nav-link active" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresRespuestas[l]%> <%= apellidosRespuestas[l]%> </a></div>
+                                class="nav-link" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresRespuestas[l]%> <%= apellidosRespuestas[l]%> </a></div>
                           </div>
                           <div class="mt-2 bg-white rounded">
                             <p class="comment-text "><%=respuestas[l].CUERPO%></p>
