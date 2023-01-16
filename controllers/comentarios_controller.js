@@ -1,4 +1,3 @@
-const publicacion = require('../models/Publicacion');
 const Comentario = require('../models/comentario');
 
 function getFechaHora(){
