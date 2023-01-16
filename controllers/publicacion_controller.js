@@ -1,6 +1,5 @@
 const Publicacion = require('../models/publicacion');
 const Persona = require('../models/persona');
-const publicacion = require('../models/Publicacion');
 const Comentario = require('../models/comentario');
 
 function getFechaHora(){
@@ -80,7 +79,7 @@ module.exports.getPublicacionByCarrera = async(req,res)=>{
 }
 
 module.exports.search = async(req,res)=>{
-    let publicaciones = await publicacion.getPublicacionByTitulo(req.body.titulo)
+    let publicaciones = await Publicacion.getPublicacionByTitulo(req.body.titulo)
     let nombres = [];
     let apellidos = [];
     let fotos = [];
@@ -164,7 +163,7 @@ let validarDatos= (data)=>{
 }
 
 module.exports.getListPubli = async(req,res)=>{
-    let publicacionesTotal = await publicacion.getPublicadas();
+    let publicacionesTotal = await Publicacion.getPublicadas();
     let page = req.query.page;
     let publicaciones =  await Publicacion.getTenpublics(page);
     let totalPages =  Math.ceil(publicacionesTotal.length/8);
