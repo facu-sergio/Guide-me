@@ -102,3 +102,10 @@ module.exports.editPerfil  = async(req,res)=>{
     }
     res.redirect('/miperfil');
 }
+
+module.exports.verPerfil = async(req,res)=>{
+    let persona = await Persona.getUserById(req.query.id);
+    let fecha = persona[0].FECHA_NAC.toISOString().slice(0, 10);
+    let estudios = await Estudio.getEstudiosByEmail(persona[0].EMAIL);
+    res.render('mi_perfil',{persona,fecha,estudios})
+}

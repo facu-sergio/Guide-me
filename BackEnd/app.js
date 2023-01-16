@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 const path = require('node:path');
+const {uuid} = require('uuidv4')
+
+//routes
 const routes_index = require('./routes/index');
 const routes_users = require('./routes/users');
 const routes_publications = require('./routes/publications');
 const routes_auth = require('./routes/auth');
-const {uuid} = require('uuidv4')
+const routes_comentarios =  require('./routes/coments');
+
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -57,7 +61,8 @@ app.use(routes_index);
 app.use(routes_users)
 app.use(routes_publications);
 app.use(routes_auth);
+app.use(routes_comentarios);
 
 
 app.listen(3000);
-console.log("server on http://localhost:3000/");
+console.log("server on http://localhost:3000/index");

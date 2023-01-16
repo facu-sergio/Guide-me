@@ -1,5 +1,5 @@
 const connection = require("../config/db");
-
+const resultsPerPage = 8;
 class publicacion {
   constructor(idPersona,carrera,titulo, empresa, cuerpo,estado,borradol,fechaHora,moderacion) {
     this.idPersona = idPersona;
@@ -43,7 +43,13 @@ class publicacion {
     [rows, fields] = await connection.query(queryStr, [id]);
     return rows;
   }
-
+  static async getTenpublics(page){
+    let offset = (page-1)*resultsPerPage;
+    let queryStr = "SELECT * FROM `publicaciones` WHERE `ESTADO`= ? AND `BORRADO_L` = 0 ORDER BY `ID_PUBLICACION` DESC LIMIT ? OFFSET ?";
+    let rows, fields;
+    [rows,fields] =  await connection.query(queryStr,["publicada",resultsPerPage,offset]);
+    return rows;
+  }
   static async getCarreras(){
     let queryStr = "SELECT * FROM `carreras_upe`";
     let rows, fields;

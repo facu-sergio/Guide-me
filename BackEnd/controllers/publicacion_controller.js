@@ -1,6 +1,7 @@
-const Publicacion = require('../models/Publicacion');
+const Publicacion = require('../models/publicacion');
 const Persona = require('../models/persona');
 const publicacion = require('../models/Publicacion');
+const Comentario = require('../models/comentario');
 
 function getFechaHora(){
     const t = new Date();
@@ -24,7 +25,7 @@ module.exports.savePublicacion = async(req,res)=>{
         let fecha_hora = getFechaHora();
         let nuevaPubli =  new Publicacion(idUsuario,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado,0,fecha_hora,null);
         nuevaPubli.savePublicacion();
-        res.redirect('/');
+        res.redirect('/index');
     }
 }
 
@@ -36,7 +37,31 @@ module.exports.deletePublicacion = async(req,res)=>{
 module.exports.getPublicacion = async(req,res)=>{
     let publicacion = await  Publicacion.getPublicacion(req.query.id);
     let persona = await Persona.getUserById(publicacion[0].ID_PERSONA);
-    res.render('publicacion',{publicacion,persona});
+    let comentarios =  await Comentario.getComentariosPublicacion(req.query.id);
+    let respuestas =  await Comentario.getRespuestasPublicacion(req.query.id);
+    
+    let nombresComentarios = [];
+    let apellidosComentarios = [];
+    let fotosComentarios = [];
+
+    let nombresRespuestas = [];
+    let apellidosRespuestas = [];
+    let fotosRespuestas = [];
+
+    for(let i=0;i<comentarios.length;i++){
+        let persona = await Persona.getUserById(comentarios[i].ID_PERSONA);
+        nombresComentarios.push(persona[0].NOMBRE);
+        apellidosComentarios.push(persona[0].APELLIDO);
+        fotosComentarios.push(persona[0].FOTO);
+    }
+
+    for(let i=0;i<respuestas.length;i++){
+        let persona = await Persona.getUserById(respuestas[i].ID_PERSONA);
+        nombresRespuestas.push(persona[0].NOMBRE);
+        apellidosRespuestas.push(persona[0].APELLIDO);
+        fotosRespuestas.push(persona[0].FOTO);
+    }
+    res.render('publicacion',{publicacion,persona,comentarios,respuestas,nombresComentarios,apellidosComentarios,fotosComentarios,fotosRespuestas,apellidosRespuestas,nombresRespuestas});
 }
 
 module.exports.getPublicacionByCarrera = async(req,res)=>{
@@ -138,3 +163,19 @@ let validarDatos= (data)=>{
     return errors;
 }
 
+module.exports.getListPubli = async(req,res)=>{
+    let publicacionesTotal = await publicacion.getPublicadas();
+    let page = req.query.page;
+    let publicaciones =  await Publicacion.getTenpublics(page);
+    let totalPages =  Math.ceil(publicacionesTotal.length/8);
+    let nombres = [];
+    let apellidos = [];
+    let fotos = [];
+    for(let i = 0;i<publicaciones.length;i++){
+       let persona = await Persona.getUserById(publicaciones[i].ID_PERSONA);
+       fotos.push(persona[0].FOTO)
+       nombres.push(persona[0].NOMBRE)
+       apellidos.push(persona[0].APELLIDO)
+    }
+    res.render('index',{publicaciones,fotos,nombres,apellidos,totalPages});
+}

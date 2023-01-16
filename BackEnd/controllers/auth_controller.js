@@ -39,12 +39,12 @@ module.exports.login = async (req,res)=>{
             alertIcon:'success',
             showConfirmButton: false,
             timer: 1500,
-            ruta: '',
+            ruta: 'index',
             oldData:''
     });
 }
 
 module.exports.logout = async (req,res)=>{
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/index');
 }

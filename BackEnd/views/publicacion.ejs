@@ -41,33 +41,74 @@
           </div>
         </div>
         <div class="d-flex row ">
-          <div class="col-md-8 ">
-            <div class="d-flex flex-column comment-section">
-              <div class="bg-white p-2 border border-secondary rounded">
-                <div class="d-flex flex-row user-info"><img class="rounded-circle" src="img/ruth.jpg" width="40">
-                  <div class="d-flex flex-column justify-content-start ml-2"><span
-                      class="d-block font-weight-bold name">Ruth Iascas</span></div>
-                </div>
-                <div class="mt-2 bg-white rounded">
-                  <p class="comment-text ">Hola muy interesante tu experiencia, gracias por publicarla, una consulta
-                    ¿usted se encarga de charlar con los clientes? Un saludo.</p>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-md-2">
-                    <button class="btn btn-primary btn-sm">Responder</button>
-                  </div>
-
-                </div>
-              </div>
-            <%if(locals.userLogged){%>
-              <div class="bg-light p-2">
-                <div class="d-flex flex-row align-items-start "><img class="rounded-circle me-1" src="uploads/<%=locals.userLogged[0].FOTO%>"
-                    width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
-                <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Enviar
-                    comentario</button> <button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
-                    type="button">Cancel</button></div>
-              </div>
-            <%}%>
+          <div class="col-md-8">
+            <div class="d-flex flex-column  comment-section">
+             <% for(let i=0;i<comentarios.length;i++){%>
+                <div class="bg-white p-2 border border-2 border-secondary border-opacity-50 rounded mt-4"id="separador">
+                    <div class="bg-white p-2 border border-1 border-primary  border-opacity-50 rounded mt-2" id="comment">
+                      <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosComentarios[i]%>" width="40">
+                        <div class="d-flex flex-column justify-content-start ml-2"><a
+                            class="nav-link active" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresComentarios[i]%> <%= apellidosComentarios[i]%> </a></div>
+                      </div>
+                      <div class="mt-2 bg-white rounded">
+                        <p class="comment-text "><%=comentarios[i].CUERPO%></p>
+                      </div>
+                      
+                    </div>
+                    <%if(locals.userLogged){%>
+                      <div class="row mt-1">
+                        <div class="col-md-2">
+                          <button class="btn btn-primary btn-sm replybtn">Responder</button>
+                        </div>
+                      </div>
+                    <%}%>
+                    <div class="row">
+                      <div class="col-md-6 offset-md-3">
+                        <form action="respuesta?publi=<%=publicacion[0].ID_PUBLICACION%>&comen=<%=comentarios[i].ID_COMENTARIO%>" method="post" id="formRes">
+                        </form>
+                      </div>
+                    </div>
+                    <% for(let l=0;l<respuestas.length;l++){%>
+                      <%if(respuestas[l].EN_RESPUESTA_DE == comentarios[i].ID_COMENTARIO){%>
+                        <div class="bg-white p-2  border border-1  border-primary border-opacity-50 rounded mt-2" id="comment">
+                          <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosRespuestas[l]%>" width="40">
+                            <div class="d-flex flex-column justify-content-start ml-2"><a
+                                class="nav-link active" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresRespuestas[l]%> <%= apellidosRespuestas[l]%> </a></div>
+                          </div>
+                          <div class="mt-2 bg-white rounded">
+                            <p class="comment-text "><%=respuestas[l].CUERPO%></p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 offset-md-3">
+                            <form action="respuesta?publi=<%=publicacion[0].ID_PUBLICACION%>&comen=<%=comentarios[i].ID_COMENTARIO%>" method="post" id="formRes">
+                            </form>
+                          </div>
+                        </div>
+                        <%if(locals.userLogged){%>
+                          <div class="row mt-1">
+                            <div class="col-md-2">
+                              <button class="btn btn-primary btn-sm replybtn">Responder</button>
+                            </div>
+                          </div>
+                        <%}%>
+                      <%}%> 
+                    <%}%>
+                </div> 
+              <%}%>
+            
+              <%if(locals.userLogged){%>
+                <form action="comentario" method="post">
+                  <div class="bg-light p-2">
+                    <div class="d-flex flex-row align-items-start "><img class="rounded-circle me-1" src="uploads/<%=locals.userLogged[0].FOTO%>"width="40">
+                        <textarea class="form-control " id="cuerpo" name="cuerpo" required></textarea>
+                    </div>
+                    <input type="text" name="idpubli" id="idpubli" class="d-none" value="<%=publicacion[0].ID_PUBLICACION%>">
+                    <div class="mt-2 text-right">
+                      <button class="btn btn-primary btn-sm shadow-none " type="submit">Enviar comentario</button>
+                    </div>
+                </form>
+              <%}%>
             </div>
           </div>
         </div>
@@ -76,7 +117,8 @@
 
     </div>
     <!--fin container-->
+    <script src="js/publicacion.js"></script>
 </body> 
-</body>
+
 
 </html>

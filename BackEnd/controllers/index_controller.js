@@ -3,7 +3,9 @@ const Persona = require('../models/persona')
 
 
  module.exports.mostrarPublicaciones = async (req,res)=>{
-    let publicaciones = await publicacion.getPublicadas();
+    let publicacionesTotal = await publicacion.getPublicadas();
+    let publicaciones= await publicacion.getTenpublics(1);
+    let totalPages =  Math.ceil(publicacionesTotal.length/8);
     let nombres = [];
     let apellidos = [];
     let fotos = [];
@@ -13,5 +15,5 @@ const Persona = require('../models/persona')
        nombres.push(persona[0].NOMBRE)
        apellidos.push(persona[0].APELLIDO)
     }
-    res.render('index',{publicaciones,fotos,nombres,apellidos});
+    res.render('index',{publicaciones,fotos,nombres,apellidos,totalPages});
 }

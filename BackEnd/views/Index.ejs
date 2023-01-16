@@ -31,6 +31,20 @@
             </div>
         </div>
         <%- include('partials/tarjeta'); %>
+        <div class="row">
+            <div class="col-md-4 offset-md-5">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link "  id="previus">Anterior</a></li>
+                        <% for(let i=1;i<=totalPages;i++){ %>
+                            <li class="page-item"><a class="page-link foil" href="/listPublicaciones?page=<%=i%>"><%=i%></a></li>
+                        <%}%>
+                        <li class="page-item"><a class="page-link"  id="next">Siguiente</a></li>
+                    </ul>   
+                </nav>
+            </div>
+        </div>
+              
     </div><!-- container -->
     <script src="js/index.js"></script>
 </body>
