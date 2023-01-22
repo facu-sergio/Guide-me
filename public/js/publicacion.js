@@ -215,6 +215,8 @@ async function inicio(){
     getComentarios();
     const nomegusta = document.querySelector('#nomegusta');
     const megusta = document.querySelector('#megusta');
+    megusta.classList.remove('d-none')
+    megusta.classList.remove('d-none')
     let logged = await loged();
     if(logged.status=="logged"){
         document.querySelector('#enviarComment').addEventListener('click',enviarComment.bind(null,0));
