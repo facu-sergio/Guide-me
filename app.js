@@ -2,14 +2,15 @@ const express = require("express");
 const app = express();
 const path = require('path');
 const {uuid} = require('uuidv4')
-
+const bodyParser = require("body-parser")
 //routes
 const routes_index = require('./routes/index');
 const routes_users = require('./routes/users');
 const routes_publications = require('./routes/publications');
 const routes_auth = require('./routes/auth');
 const routes_comentarios =  require('./routes/coments');
-
+const routes_like = require('./routes/like');
+const routes_notificaciones = require('./routes/notifications');
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -19,8 +20,8 @@ const storage = multer.diskStorage({
     }
 });
 
-
 //setings
+app.use(bodyParser.json())
 app.use(express.text());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,7 +37,8 @@ app.use(cookieParser('secret'));
 app.use(session({ cookie: { maxAge: 1800000 }, 
   secret: 'woot',
   resave: false, 
-  saveUninitialized: false}));
+  saveUninitialized: false,
+}));
 
 app.use(multer({
     storage,
@@ -62,7 +64,8 @@ app.use(routes_users)
 app.use(routes_publications);
 app.use(routes_auth);
 app.use(routes_comentarios);
-
+app.use(routes_like);
+app.use(routes_notificaciones);
 
 app.listen(process.env.PORT||3000);
 console.log("server on http://localhost:3000/index");

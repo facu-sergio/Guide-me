@@ -30,7 +30,14 @@ class comentario{
     let rows, fields;
     [rows, fields] = await connection.query(queryStr,[idPublicacion]);
     return rows;
-    }    
+    }
+
+    static async getPersonasComentando(idcoment){
+        let queryStr = "SELECT * FROM `comentarios` WHERE `EN_RESPUESTA_DE` = ?  "
+        let rows, fields;
+        [rows, fields] = await connection.query(queryStr,[idcoment]);
+        return rows;
+    }
 }
 
 module.exports = comentario;

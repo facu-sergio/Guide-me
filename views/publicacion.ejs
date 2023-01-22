@@ -1,115 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('partials/head') %>
+
 <body>
+  <script  src="js/publicacion.js" ></script>
   <div class="container mt-5">
     <%- include('partials/navbar') %>
     <div class="card text-center mt-4 shadow mb-3">
       <div class="card-header">
-        <div class="col-md-4 col-xs-12 offset-md-4">
-          <img src="uploads/<%= persona[0].FOTO%> " alt="" class="rounded ms-5" height="100px"> <button
-            class="btn btn-success btn-sm ms-2">Seguir</button>
+        <div class="col-md-4 col-xs-12 offset-md-4 text-center">
+          
         </div>
         <div class="row">
-          <div class="col-md-4 col-xs-12 offset-md-4">
-            <p class="h4"><%= persona[0].NOMBRE%> <%= persona[0].APELLIDO %></p>
+          <div class="col-md-3 col-lg-2 col-xs-1 col-sm-2  offset-sm-2   offset-md-3 offset-lg-4  mt-3  text-xl-end  ">
+            <img src="uploads/<%= persona[0].FOTO%> " alt="" class="rounded ms-5" height="100px"> 
           </div>
-          <div class="col-md-1 ">
-
+          <div class="col-lg-3 col-md-5 col-sm-8 col-xs-8    mt-xs-1   mt-sm-4 text-md-start    ">
+            <a class="h4 " href="/perfil?id=<%=persona[0].ID_PERSONA%>"><%= persona[0].NOMBRE%> <%= persona[0].APELLIDO %></a>
+            <p class="h4"><%= publicacion[0].TITULO%> en <%= publicacion[0].EMPRESA%></p>
           </div>
+          
         </div>
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <p class="h4"><%= publicacion[0].TITULO%> en <%= publicacion[0].EMPRESA%></p>
+            
           </div>
         </div>
       </div>
       <!--fin cardHeader-->
       <div class="card-body">
         <div class="row">
-          <div class="col-md-7 offset-md-3">
-            <p class=""><%= publicacion[0].CUERPO%>
+          <div class="col-md-8 offset-md-2">
+            <p class="fs-5"><%= publicacion[0].CUERPO%>
             </p>
           </div>
         </div>
       </div>
       <!--fin cardBody-->
       <div class="card-footer text-muted">
+      <%if(locals.userLogged){%>
         <div class="row">
           <div class="col-md-2 offset-md-10">
-            <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"> <span class="text-secondary">Me gusta!</span> </i>
+            <span class="badge bg-primary" id="like-count"><%=likes.length%></span>
+             <i class="fa fa-thumbs-up fa-lg " id="nomegusta" aria-hidden="true"></i>  
+             <i class="fa fa-thumbs-o-up  fa-lg " aria-hidden="true"
+             id="megusta" data-idpubli="<%=publicacion[0].ID_PUBLICACION%>" data-idpersona="<%=userLogged[0].ID_PERSONA%>" data-idDestinatario="<%=publicacion[0].ID_PERSONA%>"></i>
           </div>
         </div>
+      <%}%> 
         <div class="d-flex row ">
           <div class="col-md-8">
-            <div class="d-flex flex-column  comment-section">
-             <% for(let i=0;i<comentarios.length;i++){%>
-                <div class="bg-white p-2 border border-2 border-secondary border-opacity-50 rounded mt-4"id="separador">
-                    <div class="bg-white p-2 border border-1 border-primary  border-opacity-50 rounded mt-2" id="comment">
-                      <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosComentarios[i]%>" width="40">
-                        <div class="d-flex flex-column justify-content-start ms-2"><a
-                            class="" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>" ><%= nombresComentarios[i]%> <%= apellidosComentarios[i]%> </a></div>
-                      </div>
-                      <div class="mt-2 bg-white rounded">
-                        <p class="comment-text "><%=comentarios[i].CUERPO%></p>
-                      </div>
-                      
-                    </div>
-                    <%if(locals.userLogged){%>
-                      <div class="row mt-1">
-                        <div class="col-md-2">
-                          <button class="btn btn-primary btn-sm replybtn">Responder</button>
-                        </div>
-                      </div>
-                    <%}%>
-                    <div class="row">
-                      <div class="col-md-6 offset-md-3">
-                        <form action="respuesta?publi=<%=publicacion[0].ID_PUBLICACION%>&comen=<%=comentarios[i].ID_COMENTARIO%>" method="post" id="formRes">
-                        </form>
-                      </div>
-                    </div>
-                    <% for(let l=0;l<respuestas.length;l++){%>
-                      <%if(respuestas[l].EN_RESPUESTA_DE == comentarios[i].ID_COMENTARIO){%>
-                        <div class="bg-white p-2  border border-1  border-primary border-opacity-50 rounded mt-2" id="comment">
-                          <div class="d-flex flex-row user-info"><img class="rounded-circle" src="uploads/<%=fotosRespuestas[l]%>" width="40">
-                            <div class="d-flex flex-column justify-content-start ml-2"><a
-                                class="nav-link" href="/perfil?id=<%=comentarios[i].ID_PERSONA%>"><%= nombresRespuestas[l]%> <%= apellidosRespuestas[l]%> </a></div>
-                          </div>
-                          <div class="mt-2 bg-white rounded">
-                            <p class="comment-text "><%=respuestas[l].CUERPO%></p>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6 offset-md-3">
-                            <form action="respuesta?publi=<%=publicacion[0].ID_PUBLICACION%>&comen=<%=comentarios[i].ID_COMENTARIO%>" method="post" id="formRes">
-                            </form>
-                          </div>
-                        </div>
-                        <%if(locals.userLogged){%>
-                          <div class="row mt-1">
-                            <div class="col-md-2">
-                              <button class="btn btn-primary btn-sm replybtn">Responder</button>
+            <section class="gradient-custom" id="contenedor-comentarios">
+             
+            </section>
+            </div>
+            <%if(locals.userLogged){%>
+              <section>
+                <div class="container my-1 py-2">
+                  <div class="row d-flex ">
+                    <div class="col-md-12 col-lg-8 col-xl-6">
+                      <div class="card">
+                        <div class="card-body p-3 body-hilo">
+                          <div class="d-flex flex-start w-100">
+                            <img class="rounded-circle shadow-1-strong me-3" id="imgNewComment"
+                              src="uploads/<%=locals.userLogged[0].FOTO%>" alt="avatar" width="65"
+                              height="65" />
+                            <div class="w-100">
+                              <h5>Añadir un comentario</h5>  
+                              <div class="form-outline">
+                                <textarea class="form-control" id="cuerpoNewComment" rows="4" required></textarea>
+                              </div>
+                              <div class="d-flex justify-content-between mt-1">
+                                <button type="button" class="btn btn-success" id="enviarComment">
+                                  Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        <%}%>
-                      <%}%> 
-                    <%}%>
-                </div> 
-              <%}%>
-            
-              <%if(locals.userLogged){%>
-                <form action="comentario" method="post">
-                  <div class="bg-light p-2">
-                    <div class="d-flex flex-row align-items-start "><img class="rounded-circle me-1" src="uploads/<%=locals.userLogged[0].FOTO%>"width="40">
-                        <textarea class="form-control " id="cuerpo" name="cuerpo" required></textarea>
+                        </div>
+                      </div><!--card-->
                     </div>
-                    <input type="text" name="idpubli" id="idpubli" class="d-none" value="<%=publicacion[0].ID_PUBLICACION%>">
-                    <div class="mt-2 text-right">
-                      <button class="btn btn-primary btn-sm shadow-none " type="submit">Enviar comentario</button>
-                    </div>
-                </form>
-              <%}%>
-            </div>
+                  </div>
+                </div>
+              </section>
+            <%}%>
+              
           </div>
         </div>
       </div>
@@ -117,7 +92,105 @@
 
     </div>
     <!--fin container-->
-    <script src="js/publicacion.js"></script>
+    <template id="comentarios">
+      <div class="container my-1 py-2 commentation">
+        <div class="row d-flex justify-content-center">
+          <div class="">
+            <div class="card card-hilo">
+              <div class="card-body p-4">
+                <div class="row">
+                  <div class="col-md-1">
+                    <div class="dropdown">
+                      <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-cog" aria-hidden="true" id="options"></i>
+                      </a>
+                    
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+            
+                  <div class="col-md-10">
+                    <div class="d-flex flex-start">
+                      <img class="rounded-circle shadow-1-strong me-3"
+                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" width="65"
+                        height="65" />
+                      <div class="flex-grow-1 flex-shrink-1" id="i-response">
+                        <div>
+                          <div class="d-flex justify-content-between align-items-center" id="contenedor-enviar">
+                            <a class="mb-1" id="nombre">
+                               <span class="small">- 2 hours ago</span>
+                            </a>
+                          </div>
+                          <p class="small mb-0 text-start" id="cuerpo">
+                            It is a long established fact that a reader will be distracted by
+                            the readable content of a page.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    
+                  </div>
+                </div>
+              </div>
+              <%if(locals.userLogged){%>
+              <div class="row divHilo d-none">
+                  <div class=" py-3  border-0 col-md-9 offset-md-1" >
+                    <div class="d-flex flex-start w-100 ms-4">
+                      <img class="rounded-circle shadow-1-strong px-1 "
+                        src="uploads/<%=locals.userLogged[0].FOTO%>" alt="avatar" width="40"
+                        height="40" />
+                      <div class="form-outline w-100">
+                        <textarea class="form-control" id="cuerpoRespuesta" placeholder="Comentar hilo" rows="2"
+                          style="background: #fff;"></textarea>
+                      </div>
+                    </div>
+                    <div class="float-end mt-1">
+                      <button type="button" class="btn btn-primary btn-sm" id="btnResponse">Responder</button>
+                    </div>
+              </div>
+                <%}%>
+            </div>  
+          </div>
+          <div class="row mt-1 rowbtn">
+            <div class="col-md-2 offset-md-4">
+              <button class="btn btn-primary btn-sm replybtn" id="show">Comentar Hilo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </template>
+
+    <template id="respuestas">
+      <div class="d-flex flex-start mt-4">
+        <a class="me-3" href="#">
+          <img class="rounded-circle shadow-1-strong"
+             alt="avatar"
+            width="65" height="65" />
+        </a>
+        <div class="flex-grow-1 flex-shrink-1">
+          <div>
+            <div class="d-flex justify-content-between align-items-center">
+              <a class="mb-1" id="Rnombre">
+                Simona Disa <span class="small">- 3 hours ago</span>
+              </a>
+            </div>
+            <p class="small mb-0 text-start" id="Rcuerpo">
+              letters, as opposed to using 'Content here, content here',
+              making it look like readable English.
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
+    
 </body> 
 
 

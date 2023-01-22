@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light mt-2">
+    
         <div class="container-fluid">
             <a class="navbar-brand" href="/index">
                 <img src="img/chatting.png" alt="" height="75">
@@ -54,15 +55,10 @@
                     <button class=" btn text-reset me-3 dropdown-toggle hidden-arrow " href="#" id="navbarDropdownMenuLink"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell"></i>
-                        <span class="badge badge-notification bg-danger">1</span>
+                        <span class="badge badge-notification bg-danger" id="count"></span>
                     </button>
-                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="#">A sebastian Lopez le gusta tu comentario</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Cristian Lopez subio una nueva publicación</a>
-                        </li>
+                    
+                    <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink" id="notificaciones">
                     </ul>
                     <a class="dropdown-toggle  align-items-center hidden-arrow" href="#"
                             id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown"
@@ -87,4 +83,6 @@
                 <%}%>
             </div>
         </div>
+
+        
         </nav>

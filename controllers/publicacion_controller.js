@@ -1,6 +1,7 @@
 const Publicacion = require('../models/publicacion');
 const Persona = require('../models/persona');
 const Comentario = require('../models/comentario');
+const Like =  require('../models/like');
 
 function getFechaHora(){
     const t = new Date();
@@ -36,31 +37,8 @@ module.exports.deletePublicacion = async(req,res)=>{
 module.exports.getPublicacion = async(req,res)=>{
     let publicacion = await  Publicacion.getPublicacion(req.query.id);
     let persona = await Persona.getUserById(publicacion[0].ID_PERSONA);
-    let comentarios =  await Comentario.getComentariosPublicacion(req.query.id);
-    let respuestas =  await Comentario.getRespuestasPublicacion(req.query.id);
-    
-    let nombresComentarios = [];
-    let apellidosComentarios = [];
-    let fotosComentarios = [];
-
-    let nombresRespuestas = [];
-    let apellidosRespuestas = [];
-    let fotosRespuestas = [];
-
-    for(let i=0;i<comentarios.length;i++){
-        let persona = await Persona.getUserById(comentarios[i].ID_PERSONA);
-        nombresComentarios.push(persona[0].NOMBRE);
-        apellidosComentarios.push(persona[0].APELLIDO);
-        fotosComentarios.push(persona[0].FOTO);
-    }
-
-    for(let i=0;i<respuestas.length;i++){
-        let persona = await Persona.getUserById(respuestas[i].ID_PERSONA);
-        nombresRespuestas.push(persona[0].NOMBRE);
-        apellidosRespuestas.push(persona[0].APELLIDO);
-        fotosRespuestas.push(persona[0].FOTO);
-    }
-    res.render('publicacion',{publicacion,persona,comentarios,respuestas,nombresComentarios,apellidosComentarios,fotosComentarios,fotosRespuestas,apellidosRespuestas,nombresRespuestas});
+    let likes = await Like.getLikesPublicacion(req.query.id);
+    res.render('publicacion',{publicacion,persona,likes});
 }
 
 module.exports.getPublicacionByCarrera = async(req,res)=>{
@@ -114,7 +92,6 @@ module.exports.editarPublicacion = async(req,res)=>{
         let publicacion = await  Publicacion.updatePublicacion(req.body.id,req.body.carrera,req.body.titulo,req.body.empresa,req.body.cuerpo,req.body.estado);
         res.redirect('/mispublicaciones');
     }
-    
 }
 
 let validarDatos= (data)=>{
@@ -125,7 +102,6 @@ let validarDatos= (data)=>{
         cuerpo: [],
         estado: []
     }
-
     if(!data.titulo){
         errors.titulo.push('El campo titulo es obligatorio');
     }else{
@@ -133,7 +109,6 @@ let validarDatos= (data)=>{
             errors.titulo.push('El campo titulo no puede tener mas de 35 caracteres');
         }
     }
-
     if(!data.empresa){
         errors.empresa.push('el campo empresa es obligatorio');
     }else{
@@ -141,11 +116,9 @@ let validarDatos= (data)=>{
             errors.empresa.push('El campo empresa no puede tener mas de 200 caracteres');
         }
     }
-
     if(!data.carrera){
         errors.carrera.push('el campo carrera es obligatorio');
     }
-
     if(!data.cuerpo){
         errors.cuerpo.push('el campo cuerpo es obligatorio');
     }
@@ -158,7 +131,6 @@ let validarDatos= (data)=>{
             delete errors[key];
         }
     }
-
     return errors;
 }
 

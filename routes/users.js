@@ -19,4 +19,6 @@ router.get("/mispublicaciones",authMiddleware, persona_controller.misPublicacion
 
 router.get("/perfil",persona_controller.verPerfil);
 
+router.get("/islogged",persona_controller.istrue);
+router.get("/getpersona",persona_controller.getPersonaFront);
 module.exports = router;

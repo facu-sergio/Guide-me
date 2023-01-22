@@ -45,6 +45,6 @@ module.exports.login = async (req,res)=>{
 }
 
 module.exports.logout = async (req,res)=>{
-    req.session.destroy();
+    req.session = null;
     res.redirect('/index');
 }

@@ -2,6 +2,7 @@ const Persona = require('../models//persona');
 const Estudio = require('../models/estudios');
 const Publicacion = require('../models/publicacion');
 const bcryptjs = require('bcryptjs');
+const connectionAsync = require('../config/db');
 
 module.exports.getFormRegistro = async (req,res)=>{
     res.render("formulario_registro",{errors:'',oldData:''})
@@ -108,4 +109,21 @@ module.exports.verPerfil = async(req,res)=>{
     let fecha = persona[0].FECHA_NAC.toISOString().slice(0, 10);
     let estudios = await Estudio.getEstudiosByEmail(persona[0].EMAIL);
     res.render('mi_perfil',{persona,fecha,estudios})
+}
+
+module.exports.istrue = async(req,res)=>{
+    if (req.session && req.session.user) {
+        res.send({status:'logged',
+                  id:res.locals.userLogged[0].ID_PERSONA})
+    } else {
+        res.send({status:'not logged'})
+    }
+}
+
+module.exports.getPersonaFront = async(req,res)=>{
+
+    let persona
+    persona = await Persona.getUserById(req.query.idPersona);
+
+    res.send(persona);
 }
