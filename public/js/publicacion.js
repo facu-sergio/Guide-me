@@ -215,8 +215,7 @@ async function inicio(){
     getComentarios();
     const nomegusta = document.querySelector('#nomegusta');
     const megusta = document.querySelector('#megusta');
-    megusta.classList.remove('d-none')
-    megusta.classList.remove('d-none')
+    
     let logged = await loged();
     if(logged.status=="logged"){
         document.querySelector('#enviarComment').addEventListener('click',enviarComment.bind(null,0));
@@ -242,6 +241,8 @@ async function inicio(){
     
     setTimeout(function() {
         let btnshow = document.querySelectorAll('.replybtn');
+        megusta.classList.remove('d-none')
+        megusta.classList.remove('d-none')
         for(let i=0;i<btnshow.length;i++){
             btnshow[i].addEventListener('click',mostrar.bind(null,i))
         }
