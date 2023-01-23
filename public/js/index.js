@@ -16,7 +16,9 @@ function prevPage(){
 function inicio(){
     let cuerpo = document.querySelectorAll('#cuerpo');
     for(let i=0;i<cuerpo.length;i++){
-        cuerpo[i].innerHTML = cuerpo[i].innerHTML.substring(0,105);
+
+        cuerpo[i].innerHTML = cuerpo[i].innerHTML.substring(0,110);
+        
     }
     var urlparams =  new URLSearchParams(window.location.search);
     var page = parseInt(urlparams.get("page"));

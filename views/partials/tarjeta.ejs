@@ -4,14 +4,14 @@
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                 <div class="card border border-3 border-dark mb-3 tarjetas card<%=publicaciones[i].ID_CAR_UPE%>" style="max-width: 18rem;">
                     <div class="card-header text-center">
-                        <img src="uploads/<%= fotos[i]%>" width="60" height="60" height="80" alt="">
-                        <a class="h4  text-capitalize nametarjet" href="/perfil?id=<%=publicaciones[i].ID_PERSONA%>"><%= nombres[i]%> <%= apellidos[i]%> </a>
+                        <img src="uploads/<%= fotos[i]%>" class="rounded" width="60" height="60" height="80" alt="">
+                        <a class="fs-4  text-capitalize nametarjet" href="/perfil?id=<%=publicaciones[i].ID_PERSONA%>"><%= nombres[i]%> <%= apellidos[i]%> </a>
                     </div>
-                    <div class="card-body text-primary">
-                        <p class="h3 text-light"><%= publicaciones[i].TITULO %></p>
-                        <div class="text-light " id="cuerpo" ><%= publicaciones[i].CUERPO %>
+                    <div class="card-body">
+                        <p class=" text-light fs-5  text-light shadow rounded text-center"> <%= publicaciones[i].TITULO %></p>
+                        <div class="text-light fs-5"  ><spam class="text-light  fs-5" id="cuerpo"><%= publicaciones[i].CUERPO %>  </spam> <span>. . .</span>
                         </div>
-                        <a href="/publicacion?id=<%= publicaciones[i].ID_PUBLICACION %>" class="btn btn-info btn-sm mt-1 ">Ver publicación Completa</a>
+                        <a href="/publicacion?id=<%= publicaciones[i].ID_PUBLICACION %>" class="btn text-light btn-sm pt-1 shadow rounded  mt-1">Ver publicación Completa</a>
                     </div>
                 </div>
             </div>
