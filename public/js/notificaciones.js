@@ -1,5 +1,3 @@
-const { json } = require("body-parser");
-
 //const server =  'http://localhost:3000/';
 const server = 'https://guide-me.onrender.com/'
 async function getNotificaciones(idPersona){
