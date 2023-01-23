@@ -1,7 +1,7 @@
 
 
-//const server = 'https://guide-me.onrender.com/'
-const server =  'http://localhost:3000/';
+const server = 'https://guide-me.onrender.com/'
+//const server =  'http://localhost:3000/';
 
 async function saveNotificacion(idRemitente,IdDestinatario,idRedirect,tipo){
     try{
