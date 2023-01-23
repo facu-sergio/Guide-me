@@ -84,9 +84,17 @@
                 </div>
               </section>
             <%}%>
-              
           </div>
+          <%if(!locals.userLogged){%>
+            <div class="row">
+              <div class="col-md-2">
+                <a class="fs-5" href="/login"><i class="fa fa-commenting-o fa-lg pe-1" aria-hidden="true"></i>Comentar</a>
+              </div>
+            </div>
+          <%}%>
         </div>
+        
+        
       </div>
       <!--fin card footer-->
 
@@ -104,7 +112,6 @@
                       <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-cog" aria-hidden="true" id="options"></i>
                       </a>
-                    
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
