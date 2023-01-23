@@ -1,3 +1,5 @@
+const { json } = require("body-parser");
+
 //const server =  'http://localhost:3000/';
 const server = 'https://guide-me.onrender.com/'
 async function getNotificaciones(idPersona){
@@ -63,18 +65,22 @@ async function getPersona(idPersona){
 
 async function inicio(){
     let id ;
+    let status;
     try{
         const response = await fetch(`${server}islogged`,{
                 method:'GET',
                 headers: { 'Content-Type': 'application/json' }
             });
             const json =  await response.json();
+            status = json.status
             id = json.id
         }catch (error) {
             console.error('Error al verificar me gusta:', error);
         }
-
-        getNotificaciones(id);
+        if(status=="logged"){
+            getNotificaciones(id);
+        }
+        
 }
 
 window.addEventListener("load", inicio);
