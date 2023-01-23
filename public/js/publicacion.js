@@ -215,9 +215,12 @@ async function inicio(){
     getComentarios();
     const nomegusta = document.querySelector('#nomegusta');
     const megusta = document.querySelector('#megusta');
-    
+    const mgNotlogin =  document.querySelector('#mgNotlogin')
     let logged = await loged();
     if(logged.status=="logged"){
+        megusta.classList.remove('d-none')
+        megusta.classList.remove('d-none')
+        mgNotlogin.classList.add('d-none');
         document.querySelector('#enviarComment').addEventListener('click',enviarComment.bind(null,0));
         megusta.addEventListener('click',saveMegusta);
          nomegusta.addEventListener('click',deleteLike);
@@ -241,8 +244,6 @@ async function inicio(){
     
     setTimeout(function() {
         let btnshow = document.querySelectorAll('.replybtn');
-        megusta.classList.remove('d-none')
-        megusta.classList.remove('d-none')
         for(let i=0;i<btnshow.length;i++){
             btnshow[i].addEventListener('click',mostrar.bind(null,i))
         }

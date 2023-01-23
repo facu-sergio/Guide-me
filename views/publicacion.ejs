@@ -38,16 +38,18 @@
       </div>
       <!--fin cardBody-->
       <div class="card-footer text-muted">
-      <%if(locals.userLogged){%>
         <div class="row">
           <div class="col-md-2 offset-md-10">
+           <a href="/login"><i class="fa fa-thumbs-o-up  fa-lg" id="mgNotlogin" aria-hidden="true"></i></a> 
             <span class="badge bg-primary" id="like-count"><%=likes.length%></span>
+            <%if(locals.userLogged){%>
              <i class="fa fa-thumbs-up fa-lg  d-none" id="nomegusta" aria-hidden="true"></i>  
              <i class="fa fa-thumbs-o-up  fa-lg  d-none" aria-hidden="true"
              id="megusta" data-idpubli="<%=publicacion[0].ID_PUBLICACION%>" data-idpersona="<%=userLogged[0].ID_PERSONA%>" data-idDestinatario="<%=publicacion[0].ID_PERSONA%>"></i>
-          </div>
+             <%}%> 
+            </div>
         </div>
-      <%}%> 
+      
         <div class="d-flex row ">
           <div class="col-md-8">
             <section class="gradient-custom" id="contenedor-comentarios">
