@@ -167,11 +167,13 @@
                 <%}%>
             </div>  
           </div>
-          <div class="row mt-1 rowbtn">
-            <div class="col-md-2 offset-md-4">
-              <button class="btn btn-primary btn-sm replybtn" id="show">Comentar Hilo</button>
+          <%if(locals.userLogged){%>
+            <div class="row mt-1 rowbtn">
+              <div class="col-md-2 offset-md-4">
+                <button class="btn btn-primary btn-sm replybtn" id="show">Comentar Hilo</button>
+              </div>
             </div>
-          </div>
+          <%}%>
         </div>
       </div>
       
