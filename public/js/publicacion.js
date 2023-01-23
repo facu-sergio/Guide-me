@@ -1,7 +1,7 @@
 
 
-//const server =  'http://localhost:3000/';
-const server = 'https://guide-me.onrender.com/'
+//const server = 'https://guide-me.onrender.com/'
+const server =  'http://localhost:3000/';
 
 async function saveNotificacion(idRemitente,IdDestinatario,idRedirect,tipo){
     try{
@@ -145,6 +145,10 @@ async function getComentarios(){
                         for(let i=0;i<btnshow.length;i++){
                             btnshow[i].addEventListener('click',mostrar.bind(null,i))
                         }
+                        let btnEditarComment = document.querySelectorAll('.editarComment')
+                        for(let i=0;i<btnEditarComment.length;i++){
+                           btnEditarComment[i].addEventListener('click',habilitarEdicion.bind(null,json.comentarios[i].ID_COMENTARIO))
+                        }
                         
                       }, 200);
                 }catch (error) {
@@ -209,17 +213,32 @@ function mostrar(number){
         rowbtn[number].classList.add('d-none')
     }
 }
- 
+function habilitarEdicion(idComentario){
+    let textoComentario =  document.querySelector('.cuerpoComentario');
+    var botonGuardar = document.createElement("button");
+    let input = document.createElement("input");
+    botonGuardar.classList.add('btn','btn-success','ms-1');
+    input.classList.add('rounded')
+    botonGuardar.innerHTML = "Guardar";
+    console.log(idComentario);
+   
+    input.value = textoComentario.innerHTML;
+    textoComentario.innerHTML = "";
+    textoComentario.appendChild(input);
+    textoComentario.appendChild(botonGuardar);
+        
+}
 async function inicio(){
     
     getComentarios();
     const nomegusta = document.querySelector('#nomegusta');
     const megusta = document.querySelector('#megusta');
-    const mgNotlogin =  document.querySelector('#mgNotlogin')
+    const mgNotlogin =  document.querySelector('#mgNotlogin');
+    
     let logged = await loged();
     if(logged.status=="logged"){
         megusta.classList.remove('d-none')
-        megusta.classList.remove('d-none')
+        nomegusta.classList.remove('d-none')
         mgNotlogin.classList.add('d-none');
         document.querySelector('#enviarComment').addEventListener('click',enviarComment.bind(null,0));
         megusta.addEventListener('click',saveMegusta);
@@ -235,20 +254,13 @@ async function inicio(){
                  if(json.length>0){
                      megusta.classList.add('d-none')
                  }else{
-                     nomegusta.classList.add('d-none')
+                     nomegusta.classList.add('d-none');
                  }
              }catch (error) {
                  console.error('Error al verificar me gusta:', error);
              }
      }
     
-    setTimeout(function() {
-        let btnshow = document.querySelectorAll('.replybtn');
-        for(let i=0;i<btnshow.length;i++){
-            btnshow[i].addEventListener('click',mostrar.bind(null,i))
-        }
-        
-        }, 200);
 }
 
 window.onload = inicio;
