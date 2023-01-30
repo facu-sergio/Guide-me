@@ -38,6 +38,25 @@ class comentario{
         [rows, fields] = await connection.query(queryStr,[idcoment]);
         return rows;
     }
+
+    static async updateComentario(cuerpo,idComent){
+        let queryStr = 'UPDATE `comentarios`  SET  `CUERPO`= ? WHERE `ID_COMENTARIO` = ?';
+        let result, fields;
+        [ result, fields ] = await connection.query(
+        queryStr,
+        [cuerpo,idComent],
+        );
+    }
+
+    static async deleteComentario(idComent){
+        let queryStr = 'DELETE FROM `comentarios`  WHERE `ID_COMENTARIO` = ?';
+        let result, fields;
+        [ result, fields ] = await connection.query(
+        queryStr,
+        [idComent],
+        );
+        return result;
+    }
 }
 
 module.exports = comentario;

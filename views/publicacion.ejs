@@ -43,8 +43,8 @@
            <a href="/login"><i class="fa fa-thumbs-o-up  fa-lg" id="mgNotlogin" aria-hidden="true"></i></a> 
             <span class="badge bg-primary" id="like-count"><%=likes.length%></span>
             <%if(locals.userLogged){%>
-             <i class="fa fa-thumbs-up fa-lg  d-none" id="nomegusta" aria-hidden="true"></i>  
-             <i class="fa fa-thumbs-o-up  fa-lg  d-none" aria-hidden="true"
+             <i class="fa fa-thumbs-up fa-lg " id="nomegusta" aria-hidden="true"></i>  
+             <i class="fa fa-thumbs-o-up  fa-lg" aria-hidden="true"
              id="megusta" data-idpubli="<%=publicacion[0].ID_PUBLICACION%>" data-idpersona="<%=userLogged[0].ID_PERSONA%>" data-idDestinatario="<%=publicacion[0].ID_PERSONA%>"></i>
              <%}%> 
             </div>
@@ -108,15 +108,16 @@
           <div class="">
             <div class="card">
               <div class="card-body p-4">
-                <div class="row">
+                <div class="row" >
                   <div class="col-md-1">
-                    <div class="dropdown">
-                      <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="dropdown"  >
+                      <a class=" dropdown-toggle d-none" id="idDropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-cog" aria-hidden="true" id="options"></i>
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li ><a class="dropdown-item editarComment ">Editar</a></li>
-                        <li><a class="dropdown-item"  id="eliminarComment">Eliminar</a></li>
+                        
+                         <li ><a class="dropdown-item editarComment ">Editar</a></li> 
+                        <li><a class="dropdown-item eliminarComment"  >Eliminar</a></li>
                       </ul>
                     </div>
                     

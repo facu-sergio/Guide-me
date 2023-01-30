@@ -1,4 +1,4 @@
-const comentario = require('../models/comentario');
+
 const Comentario = require('../models/comentario');
 const Persona =  require('../models/persona');
 
@@ -61,8 +61,19 @@ module.exports.getComentarios = async(req,res)=>{
 
     res.send({comentarios,fotosComentarios,nombresComentarios,apellidosComentarios,respuestas,nombresRespuestas,apellidosRespuestas,fotosRespuestas});
 }
-
 module.exports.getPersonasComentando = async(req,res)=>{
     let comentarios = comentario.getPersonasComentando(req.query.idComent);
     console.log(comentarios);
 }
+
+module.exports.updateComentarios = async(req,res)=>{
+    let comentario =  await Comentario.updateComentario(req.body.cuerpo,req.body.idComentario);
+    res.send({comentario})
+}
+
+module.exports.deleteComentarios = async(req,res)=>{
+
+    let eliminarComentario =  await  Comentario.deleteComentario(req.query.idcomentario);
+    res.send({eliminarComentario})
+}
+

@@ -1,7 +1,7 @@
 
 
-const server = 'https://guide-me.onrender.com/'
-//const server =  'http://localhost:3000/';
+//const server = 'https://guide-me.onrender.com/'
+const server =  'http://localhost:3000/';
 
 async function saveNotificacion(idRemitente,IdDestinatario,idRedirect,tipo){
     try{
@@ -109,12 +109,38 @@ async function getComentarios(){
                         let cuerpo =  comentario.querySelector('#cuerpo');
                         let btnResponse =  comentario.querySelector('#btnResponse');
                         let cardHilo = comentario.querySelector('.card-hilo');
+                        let ul =  comentario.querySelector("ul");
                         cardHilo.setAttribute(`id`,json.comentarios[i].ID_COMENTARIO)
                         img.setAttribute(`src`,`uploads/${json.fotosComentarios[i]}`);
                         nombre.setAttribute(`href`,`/perfil?id=${json.comentarios[i].ID_PERSONA}`) ;
                         if(logged.status=="logged"){ 
                             //btnResponse.setAttribute(`data-id`,`${json.comentarios[i].ID_COMENTARIO}`);
                             btnResponse.addEventListener('click',enviarComment.bind(null,`${json.comentarios[i].ID_COMENTARIO}`));
+                        }
+                        
+                        if(logged.id == json.comentarios[i].ID_PERSONA ){
+                           let divDrop = comentario.querySelector('#idDropdown');
+                           divDrop.classList.remove('d-none')
+                             /*let a1  = document.createElement('a');
+                            let i =  document.createElement('i');
+                            let li =  document.createElement('li');
+                            let a =  document.createElement('a');
+                            let ul =  document.createElement('ul');
+                            ul.classList.add('dropdown-menu');
+                            ul.setAttribute('aria-labelledby','dropdownMenuLink');
+                            i.classList.add('fa', 'fa-cog');
+                            a1.classList.add('dropdown-toggle');
+                            a1.setAttribute('role','button');
+                            a1.setAttribute('id','dropdownMenuLink');
+                            a1.setAttribute('data-bs-toggle','dropdown');
+                            a1.setAttribute('aria-expanded','false');
+                            a1.appendChild(i);
+                            divDrop.appendChild(a1);
+                            divDrop.appendChild(ul)
+                            a.innerHTML = "Editar"
+                            a.classList.add('dropdown-item','editarComment');
+                            li.appendChild(a);
+                            ul.appendChild(li)*/
                         }
                         nombre.innerHTML = `${json.nombresComentarios[i]} ${json.apellidosComentarios[i]} `
                         cuerpo.innerHTML = `${json.comentarios[i].CUERPO}`
@@ -142,13 +168,21 @@ async function getComentarios(){
 
                     setTimeout(function() {
                         let btnshow = document.querySelectorAll('.replybtn');
+                        
                         for(let i=0;i<btnshow.length;i++){
                             btnshow[i].addEventListener('click',mostrar.bind(null,i))
                         }
                         let btnEditarComment = document.querySelectorAll('.editarComment')
+                        
                         for(let i=0;i<btnEditarComment.length;i++){
                            btnEditarComment[i].addEventListener('click',habilitarEdicion.bind(null,json.comentarios[i].ID_COMENTARIO))
                         }
+
+                        let btnEliminarComment = document.querySelectorAll('.eliminarComment');
+
+                        for(let i=0;i<btnEliminarComment.length;i++){
+                            btnEliminarComment[i].addEventListener('click',eliminarComentario.bind(null,json.comentarios[i].ID_COMENTARIO,i))
+                         }
                         
                       }, 200);
                 }catch (error) {
@@ -211,34 +245,71 @@ function mostrar(number){
     for(let i=0;i<divHilo.length;i++){
         divHilo[number].classList.remove('d-none')
         rowbtn[number].classList.add('d-none')
-    }
+    }s
 }
-function habilitarEdicion(idComentario){
-    let textoComentario =  document.querySelector('.cuerpoComentario');
+function habilitarEdicion(idComentario,num){
+    console.log(num)
+    let textoComentario =  document.querySelectorAll('.cuerpoComentario');
     var botonGuardar = document.createElement("button");
     let input = document.createElement("input");
     botonGuardar.classList.add('btn','btn-success','ms-1');
+    botonGuardar.setAttribute('id','btnUpdate');
     input.classList.add('rounded')
+    input.setAttribute('id','cuerpoEditado')
     botonGuardar.innerHTML = "Guardar";
     console.log(idComentario);
-   
-    input.value = textoComentario.innerHTML;
-    textoComentario.innerHTML = "";
-    textoComentario.appendChild(input);
-    textoComentario.appendChild(botonGuardar);
+    input.value = textoComentario[num].innerHTML;
+    textoComentario[num].innerHTML = "";
+    textoComentario[num].appendChild(input);
+    textoComentario[num].appendChild(botonGuardar);
+
+    let btnUpdateComment =  document.querySelectorAll('#btnUpdate');
+    for(let i=0;i<btnUpdateComment.length;i++){
+        btnUpdateComment[i].addEventListener('click',updateComent.bind(null,idComentario,i));
+    }
         
 }
+
+ async function updateComent(idComentario,num){
+    let input =  document.querySelectorAll('#cuerpoEditado')
+    let cuerpo =  input[num].value;
+    try{
+        const response = await fetch(`${server}updatecomentario`,{
+                method:'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    idComentario: idComentario,
+                    cuerpo: cuerpo,
+                  })
+            });
+            const json =  await response.json();
+            console.log(json)
+            getComentarios();
+        }catch (error) {
+            console.error('Error al verificar me gusta:', error);
+        }
+ }
+
+ async function eliminarComentario(idComent){
+    try{
+        const response = await fetch(`${server}deletecomentario?idcomentario=${idComent}`,{
+                method:'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const json =  await response.json();
+           getComentarios();
+        }catch (error) {
+            console.error('Error al verificar me gusta:', error);
+        }
+ }
 async function inicio(){
-    
     getComentarios();
     const nomegusta = document.querySelector('#nomegusta');
     const megusta = document.querySelector('#megusta');
     const mgNotlogin =  document.querySelector('#mgNotlogin');
-    
     let logged = await loged();
     if(logged.status=="logged"){
-        megusta.classList.remove('d-none')
-        nomegusta.classList.remove('d-none')
+
         mgNotlogin.classList.add('d-none');
         document.querySelector('#enviarComment').addEventListener('click',enviarComment.bind(null,0));
         megusta.addEventListener('click',saveMegusta);
