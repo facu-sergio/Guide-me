@@ -142,12 +142,16 @@ async function countLikes(){
                     nomegusta.classList.add('fa','fa-thumbs-up','fa-lg');
                     nomegusta.setAttribute('id','nomegusta');
                     contenedorLikes.appendChild(nomegusta)
+                    nomegusta.addEventListener('click',deleteLike);
                 }else{
                     let megusta = document.createElement('i');
                     megusta.classList.add('fa','fa-thumbs-o-up','fa-lg');
                     megusta.setAttribute('id','megusta');
                     contenedorLikes.appendChild(megusta)
+                    megusta.addEventListener('click',saveMegusta);
                 }
+
+                
             }catch (error) {
                 console.error('Error al verificar me gusta:', error);
             }
