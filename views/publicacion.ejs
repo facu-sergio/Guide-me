@@ -39,14 +39,10 @@
       <!--fin cardBody-->
       <div class="card-footer text-muted">
         <div class="row">
-          <div class="col-md-2 offset-md-10">
-           <a href="/login"><i class="fa fa-thumbs-o-up  fa-lg" id="mgNotlogin" aria-hidden="true"></i></a> 
-            <span class="badge bg-primary" id="like-count"><%=likes.length%></span>
-            <%if(locals.userLogged){%>
-             <i class="fa fa-thumbs-up fa-lg " id="nomegusta" aria-hidden="true"></i>  
-             <i class="fa fa-thumbs-o-up  fa-lg" aria-hidden="true"
-             id="megusta" data-idpubli="<%=publicacion[0].ID_PUBLICACION%>" data-idpersona="<%=userLogged[0].ID_PERSONA%>" data-idDestinatario="<%=publicacion[0].ID_PERSONA%>"></i>
-             <%}%> 
+          <div class="col-md-2 offset-md-10" id="contenedorLikes">
+          <%if(!locals.userLogged){%>
+           <a href="/login"><i class="fa fa-thumbs-o-up  fa-lg" id="mgNotlogin" aria-hidden="true"></i></a>
+           <%}%>
             </div>
         </div>
       
@@ -111,7 +107,7 @@
                 <div class="row" >
                   <div class="col-md-1">
                     <div class="dropdown"  >
-                      <a class=" dropdown-toggle d-none" id="idDropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="d-none" id="idDropdown" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-cog" aria-hidden="true" id="options"></i>
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -122,7 +118,6 @@
                     </div>
                     
                   </div>
-            
                   <div class="col-md-10">
                     <div class="d-flex flex-start">
                       <img class="rounded-circle shadow-1-strong me-3"
@@ -143,9 +138,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-1">
-                    
-                  </div>
+                  
                 </div>
               </div>
               <%if(locals.userLogged){%>
@@ -181,25 +174,42 @@
 
     <template id="respuestas">
       <div class="d-flex flex-start mt-4">
-        <a class="me-3" href="#">
-          <img class="rounded-circle shadow-1-strong"
-             alt="avatar"
-            width="65" height="65" />
-        </a>
-        <div class="flex-grow-1 flex-shrink-1">
-          <div>
-            <div class="d-flex justify-content-between align-items-center">
-              <a class="mb-1" id="Rnombre">
-                Simona Disa <span class="small">- 3 hours ago</span>
+        <div class="row">
+          <div class="col-md-1">
+            <div class="dropdownR">
+              <a class=" d-none"  href="#" id="dropRespuesta"    role="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cog" aria-hidden="true" id="options"></i>
               </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                 <li ><a class="dropdown-item editarRespuesta">Editar</a></li> 
+                <li><a class="dropdown-item eliminarRespuesta">Eliminar</a></li>
+              </ul>
             </div>
-            <p class="small mb-0 text-start" id="Rcuerpo">
-              letters, as opposed to using 'Content here, content here',
-              making it look like readable English.
-            </p>
+          </div>
+          <div class="col-md-10">
+            <a class="me-3" href="#">
+              <img class="rounded-circle shadow-1-strong"
+                 alt="avatar"
+                width="65" height="65" />
+            </a>
+            <div class="flex-grow-1 flex-shrink-1">
+              <div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a class="mb-1" id="Rnombre">
+                    Simona Disa <span class="small">- 3 hours ago</span>
+                  </a>
+                </div>
+                <p class="small mb-0 text-start cuerpoRespuesta" id="Rcuerpo">
+                  letters, as opposed to using 'Content here, content here',
+                  making it look like readable English.
+                </p>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
-      </div>
+        
+        
     </template>
     
 </body> 

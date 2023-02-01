@@ -150,3 +150,8 @@ module.exports.getListPubli = async(req,res)=>{
     }
     res.render('Index',{publicaciones,fotos,nombres,apellidos,totalPages});
 }
+
+module.exports.getDatosPublicacion = async(req,res)=>{
+    let publicacion = await Publicacion.getPublicacion(req.query.idPublicacion)
+    res.send(publicacion)
+}

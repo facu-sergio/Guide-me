@@ -24,5 +24,7 @@ router.get('/listPublicaciones',publicacion_controller.getListPubli);
 router.get('/borrarpublicacion',authMiddleware,idMiddleware, publicacion_controller.deletePublicacion);
 
 
+router.get('/datospublicacion',publicacion_controller.getDatosPublicacion);
+
 
 module.exports = router;
