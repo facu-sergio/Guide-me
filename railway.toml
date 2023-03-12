@@ -1,0 +1,2 @@
+[routes."*"]
+  cors_origins = ["https://guide-me.up.railway.app"]
