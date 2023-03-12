@@ -1,5 +1,0 @@
-[routes."*"]
-  cors_origins = ["https://guide-me.up.railway.app"]
-  cors_methods = ["GET", "POST", "OPTIONS"]
-  cors_headers = ["Origin", "Authorization", "Accept", "Content-Type"]
-  cors_max_age = 86400
