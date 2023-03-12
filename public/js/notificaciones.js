@@ -1,7 +1,6 @@
 
 //const server =  'http://localhost:3000/';
-//const server = 'https://guide-me.onrender.com/'
-const server = 'https://guide-me.up.railway.app'
+const server = 'https://guide-me.up.railway.app/'
 async function getNotificaciones(idPersona){
     try{
         const response = await fetch(`${server}getnotificaciones?idPersona=${idPersona}`,{
