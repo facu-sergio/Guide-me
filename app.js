@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 });
 
 //setings
-app.use(cors());
+app.use(cors({ origin: 'https://guide-me.up.railway.app' }));
 app.use(bodyParser.json())
 app.use(express.text());
 app.use(express.json());
