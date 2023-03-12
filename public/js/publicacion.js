@@ -1,6 +1,6 @@
-const server = 'https://guide-me.onrender.com/'
+//const server = 'https://guide-me.onrender.com/'
 //const server =  'http://localhost:3000/';
-
+const server = 'https://guide-me.up.railway.app'
 async function saveNotificacion(idRemitente,IdDestinatario,idRedirect,tipo){
     try{
         const response = await fetch(`${server}savenotificacion`,{
