@@ -1,6 +1,6 @@
 
-//const server =  'http://localhost:3000/';
-const server = 'https://guide-me.onrender.com/'
+const server =  'http://localhost:3000/';
+//const server = 'https://guide-me.onrender.com/'
 async function getNotificaciones(idPersona){
     try{
         const response = await fetch(`${server}getnotificaciones?idPersona=${idPersona}`,{

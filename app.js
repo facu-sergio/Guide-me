@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const path = require('path');
 const {uuid} = require('uuidv4')
@@ -21,6 +22,7 @@ const storage = multer.diskStorage({
 });
 
 //setings
+app.use(cors());
 app.use(bodyParser.json())
 app.use(express.text());
 app.use(express.json());
